@@ -5,7 +5,7 @@ I've done whole literate configuration, and I've also done the having multiple =
 * Installation
 
 #+begin_src shell :results output
-  git clone https://github.com/jthorpe6/.emacs.d.git ~/.emacs.d/
+  git clone --recurse-submodules https://github.com/jthorpe6/.emacs.d.git ~/.emacs.d/
 #+end_src
 
 I also have some handy =aliases= for running =emacs=
