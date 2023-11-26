@@ -1,0 +1,70 @@
+chatgpt/
+.custom-init.el
+.last-package-update-day
+eshell/
+backup-notes.el
+.cache
+auto-save-list
+elpa
+transient
+.emacs.desktop
+.lsp-session-v1
+.mc-lists.el
+recentf
+
+# Created by https://www.toptal.com/developers/gitignore/api/emacs
+# Edit at https://www.toptal.com/developers/gitignore?templates=emacs
+
+### Emacs ###
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
+
+# network security
+/network-security.data
+
+# dap
+.dap-breakpoints
+
+# End of https://www.toptal.com/developers/gitignore/api/emacs
