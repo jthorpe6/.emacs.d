@@ -1,6 +1,6 @@
 #+title: .emacs.d
 
-I've don whole literate configuration, and I've also done the having multiple =.el= files. Now I've gone back to one huge file with all my config in it. 
+I've done whole literate configuration, and I've also done the having multiple =.el= files. Now I've gone back to one huge file with all my config in it. 
 
 * Installation
 
