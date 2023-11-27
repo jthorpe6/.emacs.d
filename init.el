@@ -619,6 +619,18 @@
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
+(use-package dired-preview
+  :ensure t
+  :config
+  (setq dired-preview-delay 0.7)
+  (setq dired-preview-max-size (expt 2 20))
+  (setq dired-preview-ignored-extensions-regexp
+	(concat "\\."
+		"\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
+		"\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
+		"\\|iso\\|epub\\|pdf\\)"))
+  (dired-preview-global-mode 1))
+
 (use-package async
   :ensure t
   :init (dired-async-mode)
