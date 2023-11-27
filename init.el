@@ -1,4 +1,4 @@
-;;; init.el --- summary -*- lexical-binding: t; outline-regexp: ";;;"; -*-
+;;; init.el --- summary -*- lexical-binding: t; outline-regexp: ";.*---"; -*-
 
 ;; Author: Joe Thorpe
 ;; Maintainer: Joe Thorpe
