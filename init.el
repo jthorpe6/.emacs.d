@@ -475,8 +475,7 @@
          ;; Minibuffer history
          :map minibuffer-local-map
          ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
-	 ("M-." . consult-xref))
+         ("M-r" . consult-history))                 ;; orig. previous-matching-history-element
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
