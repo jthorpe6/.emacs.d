@@ -685,7 +685,6 @@
   :commands magit-status
   :config
     (magit-auto-revert-mode 1)
-    ;; (setq magit-completing-read-function 'ivy-completing-read)
   :init
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
