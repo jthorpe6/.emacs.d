@@ -334,6 +334,12 @@
   :config (setq doom-modeline-time-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 
+(use-package highlight-indent-guides
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config (setq highlight-indent-guides-method 'character
+		highlight-indent-guides-responsive 'top))
+
 (use-package color-identifiers-mode
   :ensure t
   :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
