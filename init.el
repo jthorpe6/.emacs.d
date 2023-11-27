@@ -349,6 +349,17 @@
   :diminish rainbow-delimiters-mode
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (smartparens-global-mode))
+
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-s-n" . mc/mark-next-like-this)
+	 ("C-s-p" . mc/mark-previous-like-this)))
+
 ;; nerd-icons everywhere ------------------------------------------------------------------------------
 (use-package nerd-icons
   :ensure t)
@@ -621,18 +632,6 @@
          :map vertico-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
-
-;;; make life a little nicer
-(use-package smartparens
-  :ensure t
-  :diminish smartparens-mode
-  :config
-  (smartparens-global-mode))
-
-(use-package multiple-cursors
-  :ensure t
-  :bind (("C-s-n" . mc/mark-next-like-this)
-	 ("C-s-p" . mc/mark-previous-like-this)))
 
 ;; rss ------------------------------------------------------------------------------------------------
 (use-package elfeed
