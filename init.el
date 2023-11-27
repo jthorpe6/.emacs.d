@@ -1019,11 +1019,11 @@
   (org-download-heading-lvl nil)
   (org-download-timestamp "%Y%m%d-%H%M%S_")
   :config
-  (defun org-download--dir-2 ()
+  (defun jt/org-download--dir-2 ()
     "Return the 'dir-2' of the current org file.
     This is the directory in which the file is located."
     (file-name-directory (directory-file-name (buffer-file-name (buffer-base-buffer)))))
-  (setq-default org-download-image-dir #'org-download--dir-2)
+  (setq-default org-download-image-dir #'jt/org-download--dir-2)
   (add-hook 'dired-mode-hook 'org-download-enable))
 
 (use-package org-web-tools
