@@ -71,15 +71,7 @@
   :config
   ;; frame settings
   (toggle-frame-maximized)
-  (defun toggle-fullscreen ()
-    (interactive)
-    (set-frame-parameter
-     nil 'fullscreen
-     (if (not (frame-parameter nil 'fullscreen))
-         'fullscreen
-       nil)))
-  (global-set-key (kbd "s-<return>") 'toggle-fullscreen)
-
+  
   ;; character encoding
   (set-charset-priority 'unicode)
   (set-default-coding-systems 'utf-8)
@@ -124,6 +116,7 @@
   (add-to-list 'display-buffer-alist '("\\*Ibuffer\\*" . (jt/display-ibuffer-window)))
 
   ;; key bindings
+  (global-set-key (kbd "s-<return>") 'jt/toggle-fullscreen)
   (global-set-key (kbd "C-x k") 'jt/kill-current-buffer)
   (global-set-key (kbd "C-x 2") 'jt/split-and-follow-horizontally)
   (global-set-key (kbd "C-x 3") 'jt/split-and-follow-vertically)
@@ -146,7 +139,15 @@
      (when (region-active-p)
        (copy-region-as-kill (region-beginning) (region-end)))
      ad-do-it)
-  
+
+   (defun jt/toggle-fullscreen ()
+     (interactive)
+     (set-frame-parameter
+      nil 'fullscreen
+      (if (not (frame-parameter nil 'fullscreen))
+          'fullscreen
+	nil)))
+   
   (defun jt/kill-current-buffer ()
     (interactive)
     (kill-buffer (current-buffer)))
