@@ -128,7 +128,7 @@
   (global-set-key (kbd "C-x 2") 'jt/split-and-follow-horizontally)
   (global-set-key (kbd "C-x 3") 'jt/split-and-follow-vertically)
   (global-set-key (kbd "s-/") 'jt/comment-region-or-line)
-  (global-set-key (kbd "C-x C-r") 'compile)
+  (global-set-key (kbd "C-x C-x") 'compile) ;; orig. exchange-point-and-mark
   (global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
   (global-set-key (kbd "C-x .") 'next-buffer)
   (global-set-key (kbd "C-x ,") 'previous-buffer)
