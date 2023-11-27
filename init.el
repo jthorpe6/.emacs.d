@@ -1,4 +1,4 @@
-;;; init.el --- summary -*- lexical-binding: t; outline-regexp: ";;;"; -*-
+;;; init.el --- summary -*- lexical-binding: t; outline-regexp: ";.*---"; -*-
 
 ;; Author: Joe Thorpe
 ;; Maintainer: Joe Thorpe
@@ -334,6 +334,12 @@
   :config (setq doom-modeline-time-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 
+(use-package highlight-indent-guides
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config (setq highlight-indent-guides-method 'character
+		highlight-indent-guides-responsive 'top))
+
 (use-package color-identifiers-mode
   :ensure t
   :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
@@ -342,6 +348,17 @@
   :ensure t
   :diminish rainbow-delimiters-mode
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (smartparens-global-mode))
+
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-s-n" . mc/mark-next-like-this)
+	 ("C-s-p" . mc/mark-previous-like-this)))
 
 ;; nerd-icons everywhere ------------------------------------------------------------------------------
 (use-package nerd-icons
@@ -616,18 +633,6 @@
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
 
-;;; make life a little nicer
-(use-package smartparens
-  :ensure t
-  :diminish smartparens-mode
-  :config
-  (smartparens-global-mode))
-
-(use-package multiple-cursors
-  :ensure t
-  :bind (("C-s-n" . mc/mark-next-like-this)
-	 ("C-s-p" . mc/mark-previous-like-this)))
-
 ;; rss ------------------------------------------------------------------------------------------------
 (use-package elfeed
   :ensure t
@@ -680,7 +685,6 @@
   :commands magit-status
   :config
     (magit-auto-revert-mode 1)
-    ;; (setq magit-completing-read-function 'ivy-completing-read)
   :init
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
