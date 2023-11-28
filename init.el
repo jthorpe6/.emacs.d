@@ -641,9 +641,7 @@
     (side . right)
     (width . 0.3)))
 
-  (setq dired-preview-display-action-alist-function #'jt/dired-preview-to-the-right)
-
-  (dired-preview-global-mode 1))
+  (setq dired-preview-display-action-alist-function #'jt/dired-preview-to-the-right))
 
 (use-package async
   :ensure t
