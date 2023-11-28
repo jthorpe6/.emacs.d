@@ -71,7 +71,6 @@
   :config
   ;; frame settings
   (toggle-frame-maximized)
-  (fset 'yes-or-no-p 'y-or-n-p)
   
   ;; character encoding
   (set-charset-priority 'unicode)
@@ -87,6 +86,7 @@
         initial-scratch-message ""
         make-pointer-invisible t
         inhibit-startup-message t
+	use-short-answers t ;; assume Emacs >=28
         standard-indent 2
         column-number-mode t
         create-lockfiles nil
