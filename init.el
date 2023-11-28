@@ -71,6 +71,7 @@
   :config
   ;; frame settings
   (toggle-frame-maximized)
+  (fset 'yes-or-no-p 'y-or-n-p)
   
   ;; character encoding
   (set-charset-priority 'unicode)
