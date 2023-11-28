@@ -182,7 +182,13 @@
     (let ((directory "~/Documents/opt/xnu"))
       (if (file-exists-p directory)
           (dired directory)
-        (message "Directory does not exist: %s" directory)))))
+        (message "Directory does not exist: %s" directory))))
+
+  (defun jt/load-backup-notes ()
+    "Load the backup-notes.el file if it exists."
+    (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
+      (when (file-exists-p backup-notes-file)
+	(load backup-notes-file)))))
 
 ;;; eshell --------------------------------------------------------------------------------------------
 (use-package eshell
@@ -1094,12 +1100,5 @@
     (jt/start-org-agenda-update-timer)))
 
 (add-hook 'after-make-frame-functions #'jt/emacs-client-settings)
-
-;; backup notes but only on some systems --------------------------------------------------------------
-(defun jt/load-backup-notes ()
-  "Load the backup-notes.el file if it exists."
-  (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
-    (when (file-exists-p backup-notes-file)
-      (load backup-notes-file))))
 
 ;;; init.el ends here
