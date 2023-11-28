@@ -636,6 +636,15 @@
 		"\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
 		"\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
 		"\\|iso\\|epub\\|pdf\\|DS_store\\)"))
+
+  (defun jt/dired-preview-to-the-right ()
+  "Preferred `dired-preview-display-action-alist-function'."
+  '((display-buffer-in-side-window)
+    (side . right)
+    (width . 0.3)))
+
+  (setq dired-preview-display-action-alist-function #'jt/dired-preview-to-the-right)
+
   (dired-preview-global-mode 1))
 
 (use-package async
