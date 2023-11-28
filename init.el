@@ -42,7 +42,7 @@
 
 (setq gnutls-min-prime-bits 4096)
 
-;;; packages ------------------------------------------------------------------------------------------
+;;; package repos --------------------------------------------------------------------------------------
 (require 'package)
 (setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
 			 ("melpa"     . "https://melpa.org/packages/")))
@@ -419,7 +419,7 @@
          ("C-M-;" . jinx-languages)))
 
 ;;; completion and other nice things ------------------------------------------------------------------
-;; package: consult settings
+;; consult --------------------------------------------------------------------------------------------
 (use-package consult
   :ensure t
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -504,7 +504,7 @@
 
   (setq consult-narrow-key "<"))
 
-;; package: vertigo settings
+;; vertigo --------------------------------------------------------------------------------------------
 (use-package vertico
   :ensure t
   :demand
@@ -535,7 +535,7 @@
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
-;; package: marginalia settings
+;; marginalia -----------------------------------------------------------------------------------------
 (use-package marginalia
   :ensure t
   :bind (:map minibuffer-local-map
@@ -545,7 +545,7 @@
   :init
   (marginalia-mode))
 
-;; package: orderless settings
+;; orderless ------------------------------------------------------------------------------------------
 (use-package orderless
   :ensure t
   :init
@@ -553,7 +553,7 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-;; package: cape settings
+;; cape -----------------------------------------------------------------------------------------------
 (use-package cape
   :ensure t
   :bind (("C-c p p" . completion-at-point) ;; capf
@@ -578,7 +578,7 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
-;; package: corfu settings
+;; corfu ---------------------------------------------------------------------------------------------
 ;; important here is the `corfu-face' variable to make it fit with the theme
 (use-package corfu
   :ensure t
@@ -644,6 +644,7 @@
          :map vertico-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
+
 ;; pdf tools ------------------------------------------------------------------------------------------
 (use-package pdf-tools
   :ensure t)
@@ -800,7 +801,7 @@
 
 ;; python ---------------------------------------------------------------------------------------------
 (defun jt/run-python-doctest ()
-  "Run \='python -m doctest -v\=' on the current buffer's file."
+  "Run \=python -m doctest -v\= on the current buffer's file."
   (interactive)
   (let ((output-buffer (generate-new-buffer "*Python Doctest Output*"))
         (file (buffer-file-name)))
