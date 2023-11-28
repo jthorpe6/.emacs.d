@@ -635,7 +635,7 @@
 	(concat "\\."
 		"\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
 		"\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
-		"\\|iso\\|epub\\|pdf\\)"))
+		"\\|iso\\|epub\\|pdf\\|DS_store\\)"))
   (dired-preview-global-mode 1))
 
 (use-package async
