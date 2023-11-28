@@ -633,9 +633,7 @@
   (setq dired-preview-max-size (expt 2 20))
   (setq dired-preview-ignored-extensions-regexp
 	(concat "\\."
-		"\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
-		"\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
-		"\\|iso\\|epub\\|pdf\\|DS_store\\)"))
+		"\\|DS_store\\)"))
 
   (defun jt/dired-preview-to-the-right ()
   "Preferred `dired-preview-display-action-alist-function'."
