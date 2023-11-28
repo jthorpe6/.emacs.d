@@ -95,7 +95,6 @@
 	ad-redefinition-action 'accept
         global-visual-line-mode t
         global-font-lock-mode 1
-        global-auto-revert-mode t
 	compilation-read-command nil
 	server-socket-dir "~/.emacs.d/server"
 	tramp-default-method "ssh"
@@ -110,6 +109,7 @@
   (setq-default find-file-visit-truename t)
   
   ;; Buffer and window management
+  (global-auto-revert-mode t)
   (set-window-margins nil 15)
   (delete-selection-mode 1)
   (setq kill-whole-line t)
