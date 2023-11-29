@@ -837,14 +837,18 @@
   :ensure t
   :hook (python-mode . blacken-mode))
 
-(use-package virtualenvwrapper
+(use-package pyvenv
   :ensure t
   :config
-  (venv-initialize-interactive-shells))
+  (pyvenv-mode t)
 
-;; for modeline
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
-;; (setq mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+  ;; Set correct Python interpreter
+  (setq pyvenv-post-activate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
+  (setq pyvenv-post-deactivate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter "python3")))))
 
 (use-package pyenv-mode
   :ensure t
