@@ -1051,7 +1051,7 @@
   :ensure t
   :custom (denote-directory "~/org/")
   :config
-  (denote-rename-buffer-mode)
+  (denote-rename-buffer-mode t)
   (require 'denote-org-dblock))
 
 (use-package consult-notes
