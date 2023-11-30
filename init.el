@@ -1030,17 +1030,7 @@
 (use-package org-download
   :ensure t
   :bind ("C-c o d" . org-download-clipboard)
-  :custom
-  (org-download-image-org-width 50)
-  (org-download-screenshot-method "/usr/bin/import %s")
-  (org-download-heading-lvl nil)
-  (org-download-timestamp "%Y%m%d-%H%M%S_")
   :config
-  (defun jt/org-download--dir-2 ()
-    "Return the 'dir-2' of the current org file.
-    This is the directory in which the file is located."
-    (file-name-directory (directory-file-name (buffer-file-name (buffer-base-buffer)))))
-  (setq-default org-download-image-dir #'jt/org-download--dir-2)
   (add-hook 'dired-mode-hook 'org-download-enable))
 
 (use-package org-web-tools
