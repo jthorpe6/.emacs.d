@@ -1059,13 +1059,19 @@
   :after consult
   :commands (consult-notes
              consult-notes-search-in-all-notes)
-  :bind ("C-c n" . consult-notes)
+  :bind ("C-c n" . jt/consult-notes-search-in-all-notes)
   :config
   (when (locate-library "denote")
     (consult-notes-denote-mode))
   ;; search only for text files in denote dir
-  (setq consult-notes-denote-files-function (function denote-directory-text-only-files)))
-  
+  (setq consult-notes-denote-files-function (function denote-directory-text-only-files))
+
+  (defun jt/consult-notes-search-in-all-notes ()
+    (interactive)
+    (if current-prefix-arg
+	(consult-notes-search-in-all-notes)
+      (consult-notes))))
+
 (defun jt/denote-journal ()
   "Create an entry tagged `journal' with the date as its title."
   (interactive)
