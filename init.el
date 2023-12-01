@@ -87,6 +87,7 @@
         make-pointer-invisible t
         inhibit-startup-message t
 	use-short-answers t ;; assume Emacs >=28
+	sentence-end-double-space nil ;; sentences end with 1 space not two
         standard-indent 2
         column-number-mode t
         create-lockfiles nil
