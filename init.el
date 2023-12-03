@@ -985,6 +985,7 @@
 	org-hide-leading-stars t
 	org-src-fontify-natively t
 	org-src-tab-acts-natively t
+	org-capture-bookmark nil ;; capture notes are not bookmarks
 	org-html-postamble nil
 	org-babel-python-command "python3"
 	org-confirm-babel-evaluate nil
