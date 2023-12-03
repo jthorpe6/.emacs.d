@@ -232,7 +232,94 @@
     (when (string-prefix-p "*eshell*" (buffer-name))
       (delete-window)))
   
-  (global-set-key (kbd "C-c t") 'jt/eshell-here))
+  (global-set-key (kbd "C-c t") 'jt/eshell-here)
+
+;; prompt settings ------------------------------------------------------------------------------------
+  ;; The majority of this has been modified from here
+  ;; https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org#special-prompt
+  (defun jt/curr-dir-git-branch-string (pwd)
+    "Returns current git branch as a string, or the empty string if
+     PWD is not in a git repo (or the git command is not found)."
+    (interactive)
+    (when (and (not (file-remote-p pwd))
+               (eshell-search-path "git")
+               (locate-dominating-file pwd ".git"))
+      (let* ((git-url    (shell-command-to-string "git config --get remote.origin.url"))
+             ;; (git-repo   (file-name-base (s-trim git-url)))
+             (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
+             (git-branch (s-trim git-output))
+             (git-icon   "\xe0a0")
+             (git-icon2  (propertize "\xf020" 'face `(:family "nerdicons"))))
+	(concat " " git-icon2 " " git-branch))))
+
+  (defun jt/pwd-replace-home (pwd)
+    "Replace home in PWD with tilde (~) character."
+    (interactive)
+    (let* ((home (expand-file-name (getenv "HOME")))
+           (home-len (length home)))
+      (if (and
+           (>= (length pwd) home-len)
+           (equal home (substring pwd 0 home-len)))
+          (concat "~" (substring pwd home-len))
+	pwd)))
+
+  (defun jt/pwd-shorten-dirs (pwd)
+    "Shorten all directory names in PWD except the last two."
+    (let ((p-lst (split-string pwd "/")))
+      (if (> (length p-lst) 2)
+          (concat
+           (mapconcat (lambda (elm) (if (zerop (length elm)) ""
+				      (substring elm 0 1)))
+                      (butlast p-lst 2)
+                      "/")
+           "/"
+           (mapconcat (lambda (elm) elm)
+                      (last p-lst 2)
+                      "/"))
+	pwd)))  ;; Otherwise, we return the PWD
+
+  (defun jt/split-directory-prompt (directory)
+    (if (string-match-p ".*/.*" directory)
+	(list (file-name-directory directory) (file-name-base directory))
+      (list "" directory)))
+
+  (defun jt/python-prompt ()
+    "Returns a string (may be empty) based on the current Python
+   Virtual Environment. Assuming I've called the M-x command:
+   `pyenv-mode-set'."
+    (when (fboundp #'pyenv-mode-version)
+      (let ((venv (pyenv-mode-version)))
+	(when venv
+          (concat
+           (propertize " \xe928 " 'face `(:family "nerdicons"))
+           (pyenv-mode-version))))))
+
+  (defun jt/eshell-local-prompt-function ()
+    "A more useful prompt for eshell."
+    (interactive)
+    (let* ((pwd        (eshell/pwd))
+           (directory (jt/split-directory-prompt
+                       (jt/pwd-shorten-dirs
+			(jt/pwd-replace-home pwd))))
+           (parent (car directory))
+           (name   (cadr directory))
+           (branch (jt/curr-dir-git-branch-string pwd))
+           (python (when (not (file-remote-p pwd)) (jt/python-prompt)))
+           (for-git                  `(:foreground "green"))
+           (for-python               `(:foreground "green")))
+
+      (concat
+       (propertize parent)
+       (propertize name)
+       (when branch
+	 (concat
+          (propertize branch 'face for-git)))
+       (when python
+	 (concat (propertize python 'face for-python)))
+       (propertize " λ")
+       (propertize " "))))
+
+  (setq-default eshell-prompt-function #'jt/eshell-local-prompt-function))
 
 (use-package em-tramp)
 
