@@ -221,10 +221,17 @@
   (defun jt/eshell-here ()
     "Open a new Eshell buffer in the current directory."
     (interactive)
-    (split-window-horizontally)
-    (other-window 1)
-    (eshell "new"))
+    (let ((eshell-buffer-name (generate-new-buffer-name "*eshell*")))
+      (split-window-horizontally)
+      (other-window 1)
+      (eshell "new")
+      (add-hook 'kill-buffer-hook #'jt/eshell-kill-hook)))
 
+  (defun jt/eshell-kill-hook ()
+    "Kill hook function to handle Eshell buffer kill."
+    (when (string-prefix-p "*eshell*" (buffer-name))
+      (delete-window)))
+  
   (global-set-key (kbd "C-c t") 'jt/eshell-here))
 
 (use-package em-tramp)
