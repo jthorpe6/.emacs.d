@@ -199,7 +199,8 @@
 	eshell-prefer-lisp-functions t
 	eshell-history-size 10000
         eshell-hist-ignoredups t
-        eshell-cmpl-ignore-case t)
+        eshell-cmpl-ignore-case t
+	eshell-prefer-lisp-functions nil)
 
   (defun jt/eshell-clear ()
     "Clear the Eshell buffer."
@@ -220,6 +221,8 @@
   (defun jt/eshell-here ()
     "Open a new Eshell buffer in the current directory."
     (interactive)
+    (split-window-horizontally)
+    (other-window 1)
     (eshell "new"))
 
   (global-set-key (kbd "C-c t") 'jt/eshell-here))
