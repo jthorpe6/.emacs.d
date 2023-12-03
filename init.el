@@ -245,7 +245,6 @@
                (eshell-search-path "git")
                (locate-dominating-file pwd ".git"))
       (let* ((git-url    (shell-command-to-string "git config --get remote.origin.url"))
-             ;; (git-repo   (file-name-base (s-trim git-url)))
              (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
              (git-branch (s-trim git-output))
              (git-icon   "\xe0a0")
@@ -305,8 +304,8 @@
            (name   (cadr directory))
            (branch (jt/curr-dir-git-branch-string pwd))
            (python (when (not (file-remote-p pwd)) (jt/python-prompt)))
-           (for-git                  `(:foreground "green"))
-           (for-python               `(:foreground "green")))
+           (for-git `(:foreground "green"))
+           (for-python `(:foreground "green")))
 
       (concat
        (propertize parent)
