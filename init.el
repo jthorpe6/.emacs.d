@@ -317,7 +317,7 @@
 	 (concat (propertize python 'face for-python)))
        (propertize " λ")
        (propertize " "))))
-
+  (setq eshell-prompt-regexp "^[^λ]+ λ ")
   (setq-default eshell-prompt-function #'jt/eshell-local-prompt-function))
 
 (use-package em-tramp)
