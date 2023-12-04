@@ -605,7 +605,7 @@
   ;; after lazily loading the package.
   :config
   (setq consult-focus-lines t)
-
+  (setq consult-line-start-from-top t)
   (setq consult-narrow-key "<"))
 
 ;; vertigo --------------------------------------------------------------------------------------------
