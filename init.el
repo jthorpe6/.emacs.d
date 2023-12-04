@@ -1070,7 +1070,9 @@
   :hook (org-mode . jt/org-mode-setup)
   :bind
   (("C-c a" . org-agenda)
-   ("C-c c" . org-capture))
+   ("C-c c" . org-capture)
+   ("C-c s" . org-schedule)
+   ("C-c d" . org-deadline))
   :config
   (org-indent-mode 1)
   
