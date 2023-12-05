@@ -1108,6 +1108,10 @@
   :ensure t
   :config (with-eval-after-load 'org (global-org-modern-mode)))
 
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode))
+
 (use-package org-tempo
   :config
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
