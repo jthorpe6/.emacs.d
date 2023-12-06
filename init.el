@@ -201,6 +201,7 @@
 	eshell-history-size 10000
         eshell-hist-ignoredups t
         eshell-cmpl-ignore-case t
+	eshell-scroll-to-bottom-on-input t
 	eshell-prefer-lisp-functions nil)
 
   (defun jt/eshell-clear ()
