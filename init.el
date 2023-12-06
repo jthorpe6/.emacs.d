@@ -97,6 +97,7 @@
 	ad-redefinition-action 'accept
         global-visual-line-mode t
         global-font-lock-mode 1
+	compilation-scroll-output t
 	compilation-read-command nil
 	server-socket-dir "~/.emacs.d/server"
 	tramp-default-method "ssh"
