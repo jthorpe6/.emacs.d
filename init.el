@@ -231,8 +231,10 @@
 
   (defun jt/eshell-kill-hook ()
     "Kill hook function to handle Eshell buffer kill."
-    (when (string-prefix-p "*eshell*" (buffer-name))
-      (delete-window)))
+    (when (and (string-prefix-p "*eshell*" (buffer-name))
+               (window-parent))
+      (delete-window)
+      (remove-hook 'kill-buffer-hook #'jt/eshell-kill-hook)))
   
   (global-set-key (kbd "C-c t") 'jt/eshell-here)
 
