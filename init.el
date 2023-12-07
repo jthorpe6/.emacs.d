@@ -1072,6 +1072,8 @@
   :config
   (org-indent-mode 1)
 
+  ;; currently trying out the next two setq's.
+  (setq org-agenda-skip-scheduled-if-done t) ;; dont show DONE items
   (setq org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
 	(todo . " %i %-12:c")
