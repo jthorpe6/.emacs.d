@@ -1079,6 +1079,12 @@
    ("C-c d" . org-deadline))
   :config
   (org-indent-mode 1)
+
+  (setq org-agenda-prefix-format
+      '((agenda . " %i %?-12t% s")
+	(todo . " %i %-12:c")
+	(tags . " %i %-12:c%t")
+	(search . " %i %-12:c")))
   
   (setq org-startup-folded t
 	org-startup-with-inline-images t
