@@ -179,14 +179,6 @@
         (comment-or-uncomment-region (region-beginning) (region-end))
       (comment-line 1)))
 
-  (defun jt/xnu-dir ()
-    "Open xnu in Dired mode."
-    (interactive)
-    (let ((directory "~/Documents/opt/xnu"))
-      (if (file-exists-p directory)
-          (dired directory)
-        (message "Directory does not exist: %s" directory))))
-
   (defun jt/load-backup-notes ()
     "Load the backup-notes.el file if it exists."
     (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
