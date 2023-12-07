@@ -1072,7 +1072,8 @@
   :config
   (org-indent-mode 1)
 
-  ;; currently trying out the next two setq's.
+  ;; currently trying out the next three setq's.
+  (setq org-agenda-remove-tags t)
   (setq org-agenda-skip-scheduled-if-done t) ;; dont show DONE items
   (setq org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
