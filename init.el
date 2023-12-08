@@ -1075,7 +1075,9 @@
 
   ;; currently trying out the next three setq's.
   (setq org-agenda-remove-tags t)
-  (setq org-agenda-skip-scheduled-if-done t) ;; dont show DONE items
+  (setq org-agenda-skip-scheduled-if-done t
+	org-agenda-skip-deadline-if-done t) ;; dont show DONE items
+  
   (setq org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
 	(todo . " %i %-12:c")
