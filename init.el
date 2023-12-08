@@ -216,7 +216,8 @@
     "Open a new Eshell buffer in the current directory."
     (interactive)
     (let ((eshell-buffer-name (generate-new-buffer-name "*eshell*")))
-      (split-window-horizontally)
+      (if (= (length (window-list)) 1)
+	  (split-window-horizontally))
       (other-window 1)
       (eshell "new")
       (add-hook 'kill-buffer-hook #'jt/eshell-kill-hook)))
