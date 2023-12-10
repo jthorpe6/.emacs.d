@@ -521,9 +521,13 @@
 
 ;;; completion and other nice things ------------------------------------------------------------------
 ;; consult --------------------------------------------------------------------------------------------
+(use-package consult-flycheck
+  :ensure t
+  :after consult)
+
 (use-package consult
   :ensure t
-p  ;; Replace bindings. Lazily loaded due by `use-package'.
+  ;; Replace bindings. Lazily loaded due by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
          ("C-c h" . consult-history)
