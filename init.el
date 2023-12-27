@@ -1077,11 +1077,6 @@
   :config
   (org-indent-mode 1)
 
-  ;; currently trying out the next three setq's.
-  (setq org-agenda-remove-tags t)
-  (setq org-agenda-skip-scheduled-if-done t
-	org-agenda-skip-deadline-if-done t) ;; dont show DONE items
-  
   (setq org-agenda-prefix-format
       '((agenda . " %i %?-12t% s")
 	(todo . " %i %-12:c")
@@ -1099,9 +1094,28 @@
 	org-html-postamble nil
 	org-babel-python-command "python3"
 	org-confirm-babel-evaluate nil
+	org-agenda-remove-tags t
+	org-agenda-skip-scheduled-if-done t
+	org-agenda-skip-deadline-if-done t
+	org-auto-align-tags nil
+	org-tags-column 0
+	org-catch-invisible-edits 'show-and-error
+	org-special-ctrl-a/e t
+	org-insert-heading-respect-content t
+	org-pretty-entities t
+	org-ellipsis "…"
 	;; agenda files
 	org-agenda-files (append '("~/org/agenda.org")
-                                 (directory-files-recursively "~/org/journal" "\\.org$"))))
+                                 (directory-files-recursively "~/org/journal" "\\.org$"))
+	;; agenda styling
+	org-agenda-tags-column 0
+	org-agenda-block-separator ?─
+	org-agenda-time-grid
+	'((daily today require-timed)
+	  (800 1000 1200 1400 1600 1800 2000)
+	  " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+	org-agenda-current-time-string
+	"◀── now ┄┄┄┄┄┄┄"))
 
   (defadvice org-babel-execute-src-block (around load-language nil activate)
     "Load language if needed"
