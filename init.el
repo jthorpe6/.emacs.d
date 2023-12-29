@@ -967,6 +967,12 @@
 (use-package go-dlv
   :ensure t)
 
+;; rust -----------------------------------------------------------------------------------------------
+(use-package rust-mode
+  :ensure t
+  :hook ((rust-mode-hook . lsp))
+  :mode (("\\.rs\\'" . rust-mode)))
+
 ;; swift ----------------------------------------------------------------------------------------------
 (use-package lsp-sourcekit
   :ensure t
