@@ -360,14 +360,24 @@
 (use-package multi-vterm
   :ensure t
   :config
-  (defun jt/multi-term-other-window ()
-    "Open multi-term in the other window."
+  (defun jt/multi-vterm-here ()
+    "Open a new multi-vterm buffer in the current directory."
     (interactive)
-    (if (one-window-p)
-	(split-window-right))
+    (if (= (length (window-list)) 1)
+        (split-window-horizontally))
     (other-window 1)
-    (multi-vterm))
-  :bind ("C-!" . jt/multi-term-other-window))
+    (multi-vterm)
+    (add-hook 'kill-buffer-hook #'jt/multi-vterm-kill-hook))
+
+  (defun jt/multi-vterm-kill-hook ()
+    "Kill hook function to handle multi-vterm buffer kill."
+    (when (and (string-match-p "^\\*vterminal<[0-9]+>\\*$" (buffer-name))
+               (window-parent))
+      (delete-window)
+      (remove-hook 'kill-buffer-hook #'jt/multi-vterm-kill-hook)))
+
+  :bind
+  (("C-!" . jt/multi-vterm-here)))
 
 (use-package exec-path-from-shell
   :ensure t
