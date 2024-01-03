@@ -355,8 +355,19 @@
               (window (get-buffer-window buffer)))
          (when (not (one-window-p))
            (delete-window window))
-         (kill-buffer buffer))))
-  :bind ("C-!" . 'vterm-other-window))
+         (kill-buffer buffer)))))
+
+(use-package multi-vterm
+  :ensure t
+  :config
+  (defun jt/multi-term-other-window ()
+    "Open multi-term in the other window."
+    (interactive)
+    (if (one-window-p)
+	(split-window-right))
+    (other-window 1)
+    (multi-vterm))
+  :bind ("C-!" . jt/multi-term-other-window))
 
 (use-package exec-path-from-shell
   :ensure t
