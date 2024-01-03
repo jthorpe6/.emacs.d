@@ -347,15 +347,7 @@
 (use-package vterm
   :ensure t
   :config
-  (setq vterm-shell "zsh")
-  :init
-  (add-hook 'vterm-exit-functions
-     (lambda (_ _)
-       (let* ((buffer (current-buffer))
-              (window (get-buffer-window buffer)))
-         (when (not (one-window-p))
-           (delete-window window))
-         (kill-buffer buffer)))))
+  (setq vterm-shell "zsh"))
 
 (use-package multi-vterm
   :ensure t
