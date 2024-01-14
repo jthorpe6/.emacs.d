@@ -413,7 +413,8 @@
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
 
 ;; Override some modes which derive from the above
-(dolist (mode '(org-mode-hook
+(dolist (mode '(vterm-mode-hook
+		org-mode-hook
 		org-agenda-mode-hook
 		markdown-mode-hook
 		dired-mode-hook
