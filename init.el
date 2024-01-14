@@ -403,7 +403,6 @@
                       :weight 'light))
 
 ;; line numbers
-(global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 
 ;; Enable line numbers for some modes
