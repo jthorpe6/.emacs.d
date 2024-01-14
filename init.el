@@ -402,6 +402,25 @@
                       :font "Iosevka Curly-14"
                       :weight 'light))
 
+;; line numbers
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+;; Enable line numbers for some modes
+(dolist (mode '(text-mode-hook
+                prog-mode-hook
+                conf-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+;; Override some modes which derive from the above
+(dolist (mode '(org-mode-hook
+		org-agenda-mode-hook
+		dired-mode-hook
+		help-mode-hook
+		man-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 ;; set the border width
 (add-to-list 'default-frame-alist '(internal-border-width . 7))
 
