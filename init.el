@@ -95,6 +95,7 @@
         backup-directory-alist `((".*" . ,temporary-file-directory))
         auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
 	ad-redefinition-action 'accept
+	scroll-step 3
         global-visual-line-mode t
         global-font-lock-mode 1
 	compilation-scroll-output t
