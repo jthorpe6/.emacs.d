@@ -988,6 +988,11 @@
   (setq pyenv-mode-mode-line-format nil)
   (pyenv-mode))
 
+(use-package pet
+  :ensure t
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
+
 ;; golang ---------------------------------------------------------------------------------------------
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
 
