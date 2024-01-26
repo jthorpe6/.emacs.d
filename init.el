@@ -336,14 +336,6 @@
   :config
   (setq load-bash-alias-additional-aliases-files '("~/.aliases")))
 
-(use-package eshell-toggle
-  :ensure t
-  :custom
-  (eshell-toggle-size-fraction 3)
-  (eshell-toggle-run-command nil)
-  :bind
-  ("C-`" . eshell-toggle))
-
 ;;; vterm ---------------------------------------------------------------------------------------------
 (use-package vterm
   :ensure t
