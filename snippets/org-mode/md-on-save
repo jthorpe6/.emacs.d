@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: md-on-save
+# key: <md
+# --
+#+OPTIONS: toc:nil
+# Local variables:
+# eval: (add-hook 'after-save-hook 'org-md-export-to-markdown t t)
+# end:
