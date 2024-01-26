@@ -44,8 +44,9 @@
 
 ;;; package repos --------------------------------------------------------------------------------------
 (require 'package)
-(setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
-			 ("melpa"     . "https://melpa.org/packages/")))
+(setq package-archives '(("melpa"     . "https://melpa.org/packages/")
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+
 ;;(package-initialize)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -1104,7 +1105,6 @@
   (diminish org-indent-mode))
 
 (use-package org
-  :pin gnu
   :hook (org-mode . jt/org-mode-setup)
   :bind
   (("C-c a" . org-agenda)
