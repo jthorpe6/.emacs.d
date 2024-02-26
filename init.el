@@ -801,12 +801,6 @@
   :ensure t
   :after yasnippet)
 
-;; flycheck ------------------------------------------------------------------------------------------
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode t)
-  :diminish flycheck-mode)
-
 ;; git -----------------------------------------------------------------------------------------------
 (use-package magit
   :ensure t
