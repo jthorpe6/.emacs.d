@@ -841,6 +841,11 @@
   :config
   (setq dockerfile-build-progress 'plain))
 
+;; shell ----------------------------------------------------------------------------------------------
+(use-package sh-mode
+  :hook (bash-ts-mode . eglot-ensure)
+  (sh-mode . eglot-ensure))
+
 ;; python ---------------------------------------------------------------------------------------------
 (defun jt/run-python-doctest ()
   "Run \=python -m doctest -v\= on the current buffer's file."
