@@ -855,68 +855,14 @@
          (magit-pre-refresh . diff-hl-magit-pre-refresh)
 	 (magit-post-refresh . diff-hl-magit-post-refresh)))
 
-;; lsp ------------------------------------------------------------------------------------------------
-(use-package lsp-mode
+;; tree-sitter ---------------------------------------------------------------------------------------
+(use-package treesit-auto
   :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((
-         objc-mode
-         cc-mode
-         c-mode
-         c++-mode
-         json-mode
-         dockerfile-mode
-         sql-mode
-         yamal-mode
-         sh-mode
-         python-mode
-         go-mode
-         swift-mode
-         js-mode
-         web-mode
-         js-jsx-mode
-         typescript-mode
-         ) . lsp-deferred)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration)
-  :commands lsp
-  :config
-  (setq lsp-auto-guess-root t
-	lsp-log-io nil
-	lsp-restart 'auto-restart
-	lsp-keep-workspace-alive nil
-	lsp-diagnostics-provider :flycheck
-	lsp-eldoc-hook nil
-	lsp-modeline-diagnostics-enable nil
-	lsp-headerline-breadcrumb-enable nil
-	lsp-semantic-tokens-enable nil
-	lsp-enable-folding nil
-	lsp-enable-imenu nil
-	lsp-enable-snippet nil
-	read-process-output-max (* 1024 1024) ;; 1MB
-	lsp-idle-delay 0.5
-	lsp-enable-links nil
-	lsp-lens-enable nil
-	lsp-completion-provider :none) ;; we use Corfu!
   :custom
-  (lsp-enable-snippet t))
-
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode
+  (treesit-auto-install 'prompt)
   :config
-  (setq lsp-ui-doc-enable nil
-	lsp-ui-doc-header t
-	lsp-ui-doc-include-signature t
-	lsp-ui-doc-border (face-foreground 'default)
-	lsp-ui-sideline-show-code-actions t
-	lsp-ui-sideline-delay 0.05))
-
-;; debugging ------------------------------------------------------------------------------------------
-(use-package dap-mode
-  :ensure t
-  :config (setq dap-auto-configure-features '(sessions locals controls tooltip)))
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker
@@ -925,16 +871,9 @@
 (use-package dockerfile-mode
   :ensure t
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+  :hook (dockerfile-ts-mode . eglot-ensure)
   :config
   (setq dockerfile-build-progress 'plain))
-
-;; c --------------------------------------------------------------------------------------------------
-(use-package ccls
-  :ensure t
-  :hook ((c-mode c++-mode) . (lambda () (require 'ccls) (lsp)))
-  :config
-  ;; (setq ccls-sem-highlight-method nil)
-  (setq ccls-enable-skipped-ranges nil))
 
 ;; python ---------------------------------------------------------------------------------------------
 (defun jt/run-python-doctest ()
@@ -947,20 +886,13 @@
     (with-current-buffer output-buffer
       (pop-to-buffer output-buffer))))
 
-(use-package lsp-pyright
-  :ensure t
-  :after (python lsp-mode)
-  :hook
-  (python-mode-hook . (lambda ()
-            (require 'lsp-pyright) (lsp-deferred))))
-
 (use-package python
   :ensure t
-  :hook((python-mode-hook . lsp)))
+  :hook (python-ts-mode . eglot-ensure))
 
 (use-package blacken
   :ensure t
-  :hook (python-mode . blacken-mode))
+  :hook (python-ts-mode . blacken-mode))
 
 (use-package pyvenv
   :ensure t
@@ -991,10 +923,8 @@
 
 (use-package go-mode
   :ensure t
+  :hook (go-ts-mode . eglot-ensure)
   :mode (("\\.go\\'" . go-mode)))
-
-(use-package dap-dlv-go
-  :after dap-mode)
 
 (use-package go-dlv
   :ensure t)
@@ -1002,28 +932,23 @@
 ;; rust -----------------------------------------------------------------------------------------------
 (use-package rust-mode
   :ensure t
-  :hook ((rust-mode-hook . lsp))
+  :hook (rust-ts-mode . eglot-ensure)
   :mode (("\\.rs\\'" . rust-mode)))
 
 ;; swift ----------------------------------------------------------------------------------------------
-(use-package lsp-sourcekit
-  :ensure t
-  :after lsp-mode
-  :config
-  (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"))
-
 (use-package swift-mode
-  :ensure t
-  :hook (swift-mode . (lambda () (lsp))))
+  :ensure t)
 
 ;; typescript -----------------------------------------------------------------------------------------
 (use-package typescript-mode
   :ensure t
+  :hook (typescript-ts-mode . eglot-ensure)
   :mode ("\\.ts\\'" . typescript-mode))
 
 ;; javascript -----------------------------------------------------------------------------------------
 (use-package js2-mode
   :ensure t
+  :hook (javascript-mode . eglot-ensure)
   :mode ("\\.js\\'" . js2-mode))
 
 ;; general web ----------------------------------------------------------------------------------------
@@ -1046,11 +971,13 @@
 ;; json -----------------------------------------------------------------------------------------------
 (use-package json-mode
   :ensure t
+  :hook (json-ts-mode . eglot-ensure)
   :mode (("\\.json\\'" . json-mode)))
 
 ;; yaml -----------------------------------------------------------------------------------------------
 (use-package yaml-mode
   :ensure t
+  :hook (yaml-ts-mode . eglot-ensure)
   :config
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-hook 'yaml-mode-hook
@@ -1059,6 +986,7 @@
 ;; markdown ------------------------------------------------------------------------------------------
 (use-package markdown-mode
   :mode "\\.md\\'"
+  :hook (markdown-mode . eglot-ensure)
   :ensure t)
 
 ;;; org-mode -----------------------------------------------------------------------------------------
