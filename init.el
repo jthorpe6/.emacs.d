@@ -833,6 +833,13 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+;; eglot ----------------------------------------------------------------------------------------------
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '(c-ts-mode . ("ccls")))
+  (add-to-list 'eglot-server-programs '(c++-ts-mode . ("ccls"))))
+
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker
   :ensure t)
@@ -886,6 +893,11 @@
   :ensure t
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
+
+;; c/c++ ----------------------------------------------------------------------------------------------
+(use-package c-mode
+  :hook (c-ts-mode . eglot-ensure)
+  (c++-ts-mode . eglot-ensure))
 
 ;; golang ---------------------------------------------------------------------------------------------
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
