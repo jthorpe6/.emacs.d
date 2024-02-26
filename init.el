@@ -761,16 +761,6 @@
 (use-package pdf-tools
   :ensure t)
 
-;; rss ------------------------------------------------------------------------------------------------
-(use-package elfeed
-  :ensure t
-  :init
-  (setq elfeed-feeds
-        '(("https://news.ycombinator.com/rss" hacker-news))))
-
-(use-package elfeed-goodies
-  :ensure t)
-
 ;; chatgpt --------------------------------------------------------------------------------------------
 ;; M-x set-variable chatgpt-shell-openai-key
 (use-package chatgpt-shell
