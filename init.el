@@ -744,23 +744,6 @@
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
-(use-package dired-preview
-  :ensure t
-  :config
-  (setq dired-preview-delay 0.7)
-  (setq dired-preview-max-size (expt 2 20))
-  (setq dired-preview-ignored-extensions-regexp
-	(concat "\\."
-		"\\|DS_store\\)"))
-
-  (defun jt/dired-preview-to-the-right ()
-  "Preferred `dired-preview-display-action-alist-function'."
-  '((display-buffer-in-side-window)
-    (side . right)
-    (width . 0.3)))
-
-  (setq dired-preview-display-action-alist-function #'jt/dired-preview-to-the-right))
-
 (use-package async
   :ensure t
   :init (dired-async-mode)
