@@ -469,10 +469,6 @@
   :config (setq highlight-indent-guides-method 'character
 		highlight-indent-guides-responsive 'top))
 
-(use-package color-identifiers-mode
-  :ensure t
-  :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
-
 (use-package rainbow-delimiters
   :ensure t
   :diminish rainbow-delimiters-mode
