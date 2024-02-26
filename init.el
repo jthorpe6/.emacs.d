@@ -544,10 +544,6 @@
 
 ;;; completion and other nice things ------------------------------------------------------------------
 ;; consult --------------------------------------------------------------------------------------------
-(use-package consult-flycheck
-  :ensure t
-  :after consult)
-
 (use-package consult
   :ensure t
   ;; Replace bindings. Lazily loaded due by `use-package'.
@@ -575,7 +571,7 @@
          ("M-y" . consult-yank-pop)                ;; orig. yank-pop
          ;; M-g bindings in `goto-map'
          ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flycheck)
+         ("M-g f" . consult-flymake)
          ("M-g g" . consult-goto-line)             ;; orig. goto-line
          ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
 	 ("s-l" . consult-goto-line)
