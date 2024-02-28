@@ -874,11 +874,12 @@
 
 (use-package python
   :ensure t
-  :hook (python-ts-mode . eglot-ensure))
+  :hook (python-mode . eglot-ensure)
+  (python-mode . tree-sitter-hl-mode))
 
 (use-package blacken
   :ensure t
-  :hook (python-ts-mode . blacken-mode))
+  :hook (python-mode . blacken-mode))
 
 (use-package pyvenv
   :ensure t
