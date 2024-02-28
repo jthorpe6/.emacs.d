@@ -815,6 +815,12 @@
 	 (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; tree-sitter ---------------------------------------------------------------------------------------
+(use-package tree-sitter
+  :ensure t)
+
+(use-package tree-sitter-langs
+  :ensure t)
+
 (use-package treesit-auto
   :ensure t
   :custom
