@@ -97,6 +97,7 @@
         auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
 	ad-redefinition-action 'accept
 	scroll-step 3
+	recentf-mode 1
         global-visual-line-mode t
         global-font-lock-mode 1
 	compilation-scroll-output t
@@ -554,7 +555,7 @@
          ("C-c m" . consult-man)
          ("C-c i" . consult-info)
 	 ("C-s" . consult-line) ;; need to make C-s feel nice
-	 ;; ("C-r" . consult-recent-file)
+	 ("C-r" . consult-recent-file)
          ([remap Info-search] . consult-info)
          ;; C-x bindings in `ctl-x-map'
          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
