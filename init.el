@@ -97,9 +97,6 @@
         auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
 	ad-redefinition-action 'accept
 	scroll-step 3
-	recentf-mode 1
-	recentf-max-menu-items 25
-	recentf-max-saved-items 25
         global-visual-line-mode t
         global-font-lock-mode 1
 	compilation-scroll-output t
@@ -122,7 +119,6 @@
   (delete-selection-mode 1)
   (setq kill-whole-line t)
   (add-to-list 'display-buffer-alist '("\\*Ibuffer\\*" . (jt/display-ibuffer-window)))
-  (run-at-time nil (* 5 60) 'recentf-save-list)
 
   ;; key bindings
   (global-set-key (kbd "s-<return>") 'jt/toggle-fullscreen)
@@ -190,6 +186,14 @@
     (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
       (when (file-exists-p backup-notes-file)
 	(load backup-notes-file)))))
+
+;;; recentf -------------------------------------------------------------------------------------------
+(use-package recentf
+  :config
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25
+	recentf-max-saved-items 25)
+  (run-at-time nil (* 5 60) 'recentf-save-list))
 
 ;;; eshell --------------------------------------------------------------------------------------------
 (use-package eshell
