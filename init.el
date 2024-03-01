@@ -962,23 +962,6 @@
   :hook (javascript-mode . eglot-ensure)
   :mode ("\\.js\\'" . js2-mode))
 
-;; general web ----------------------------------------------------------------------------------------
-(use-package web-mode
-  :ensure t
-  :mode ("\\.html\\'"
-         "\\.css\\'")
-  :config
-  (progn
-    (setq web-mode-code-indent-offset 2
-	  web-mode-enable-auto-quoting nil)))
-
-(use-package web-beautify
-    :ensure t
-    :bind (:map web-mode-map
-           ("C-c b" . web-beautify-html)
-           :map js2-mode-map
-           ("C-c b" . web-beautify-js)))
-
 ;; json -----------------------------------------------------------------------------------------------
 (use-package json-mode
   :ensure t
