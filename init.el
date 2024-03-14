@@ -1114,6 +1114,9 @@
 (use-package htmlize
   :ensure t)
 
+(use-package ob-async
+  :ensure t)
+
 (use-package ob-go
   :ensure t)
 
