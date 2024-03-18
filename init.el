@@ -471,7 +471,8 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-tokyo-night t)
+  ;; (load-theme 'doom-tokyo-night t)
+  (load-theme 'doom-xcode t)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -1202,7 +1203,7 @@
   "Settings that need to be set in the Emacs client this takes the FRAME argument."
   (with-selected-frame frame
     (jt/set-fonts)
-    (load-theme 'doom-tokyo-night t)
+    (load-theme 'doom-xcode t)
     (set-window-margins nil 15)
     (setq column-number-mode t)
     (menu-bar-mode -1)
