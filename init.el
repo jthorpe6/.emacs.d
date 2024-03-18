@@ -461,9 +461,19 @@
 ;;   :ensure t
 ;;   :config (load-theme 'nord t))
 
-(use-package catppuccin-theme
+;; (use-package catppuccin-theme
+;;   :ensure t
+;;   :config (load-theme 'catppuccin t))
+
+(use-package doom-themes
   :ensure t
-  :config (load-theme 'catppuccin t))
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-tokyo-night t)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 (use-package doom-modeline
   :ensure t
@@ -723,9 +733,9 @@
   (corfu-echo-mode)
   :config
   (setq corfu-auto t
-      corfu-quit-no-match 'separator)
-  (custom-set-faces
-   '(corfu-default ((t (:background "#1e1e2e"))))))
+	corfu-quit-no-match 'separator))
+  ;; (custom-set-faces
+  ;;  '(corfu-default ((t (:background "#1e1e2e")))))
 
 ;;; grep settings -------------------------------------------------------------------------------------
 (setq grep-command "rg --color=always --no-heading --line-number --smart-case --follow ")
@@ -1192,7 +1202,7 @@
   "Settings that need to be set in the Emacs client this takes the FRAME argument."
   (with-selected-frame frame
     (jt/set-fonts)
-    (load-theme 'catppuccin t)
+    (load-theme 'doom-tokyo-night t)
     (set-window-margins nil 15)
     (setq column-number-mode t)
     (menu-bar-mode -1)
