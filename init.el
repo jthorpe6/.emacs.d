@@ -853,7 +853,8 @@
   (add-to-list 'eglot-server-programs '(c-ts-mode . ("ccls")))
   (add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
   (add-to-list 'eglot-server-programs '(c++-ts-mode . ("ccls")))
-  (add-to-list 'eglot-server-programs '(c++-mode . ("ccls"))))
+  (add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
+  (add-to-list 'eglot-server-programs '(objc-mode . ("ccls"))))
 
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker
