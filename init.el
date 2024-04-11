@@ -255,7 +255,7 @@
              (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
              (git-branch (s-trim git-output))
              (git-icon   "\xe0a0")
-             (git-icon2  (propertize "\xf020" 'face `(:family "nerdicons"))))
+             (git-icon2  (propertize "\xf02a2" 'face `(:family "nerdicons"))))
 	(concat " " git-icon2 " " git-branch))))
 
   (defun jt/pwd-replace-home (pwd)
