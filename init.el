@@ -810,6 +810,14 @@
   :ensure t
   :after yasnippet)
 
+(use-package yasnippet-capf
+  :ensure t
+  :after cape
+  :config
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
+(use-package consult-yasnippet :ensure t)
+
 ;; git -----------------------------------------------------------------------------------------------
 (use-package magit
   :ensure t
