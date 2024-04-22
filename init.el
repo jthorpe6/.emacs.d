@@ -841,6 +841,22 @@
          (magit-pre-refresh . diff-hl-magit-pre-refresh)
 	 (magit-post-refresh . diff-hl-magit-post-refresh)))
 
+(use-package blamer
+  :ensure t
+  :bind (("s-b" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (setq blamer-prettify-time-p t)
+  (global-blamer-mode 1))
+
 ;; tree-sitter ---------------------------------------------------------------------------------------
 (use-package tree-sitter
   :ensure t
