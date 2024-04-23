@@ -253,10 +253,8 @@
                (locate-dominating-file pwd ".git"))
       (let* ((git-url    (shell-command-to-string "git config --get remote.origin.url"))
              (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
-             (git-branch (s-trim git-output))
-             (git-icon   "\xe0a0")
-             (git-icon2  (propertize "\xf02a2" 'face `(:family "nerdicons"))))
-	(concat " " git-icon2 " " git-branch))))
+             (git-branch (s-trim git-output)))
+	(concat " " git-branch))))
 
   (defun jt/pwd-replace-home (pwd)
     "Replace home in PWD with tilde (~) character."
