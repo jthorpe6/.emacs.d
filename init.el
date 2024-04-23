@@ -977,6 +977,11 @@
   (rust-mode . tree-sitter-hl-mode)
   :mode (("\\.rs\\'" . rust-mode)))
 
+(use-package cargo
+  :ensure t
+  :hook (rust-ts-mode . cargo-minor-mode)
+  (rust-mode . cargo-minor-mode))
+
 ;; swift ----------------------------------------------------------------------------------------------
 (use-package swift-mode
   :ensure t)
