@@ -1159,6 +1159,9 @@
 (use-package ob-go
   :ensure t)
 
+(use-package ob-rust
+  :ensure t)
+
 (use-package ox-hugo
   :ensure t
   :pin melpa
