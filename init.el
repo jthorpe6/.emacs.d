@@ -389,17 +389,17 @@
   "Set the specific fonts that Emacs should use."
   ;; set default font
   (set-face-attribute 'default nil
-		      :font "JetBrains Mono-14"
+		      :font "JetBrains Mono-12"
 		      :weight 'light)
 
   ;; Set monospace font
   (set-face-attribute 'fixed-pitch nil
-                      :font "JetBrains Mono-14"
+                      :font "JetBrains Mono-12"
                       :weight 'light)
 
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil
-                      :font "Iosevka Curly-14"
+                      :font "Iosevka Curly-12"
                       :weight 'light))
 
 ;; line numbers
