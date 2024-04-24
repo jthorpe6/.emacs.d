@@ -841,7 +841,7 @@
 
 (use-package blamer
   :ensure t
-  :bind (("s-b" . blamer-show-commit-info))
+  :bind (("s-b" . global-blamer-mode))
   :defer 20
   :custom
   (blamer-idle-time 0.3)
@@ -852,8 +852,7 @@
                     :height 140
                     :italic t)))
   :config
-  (setq blamer-prettify-time-p t)
-  (global-blamer-mode 1))
+  (setq blamer-prettify-time-p t))
 
 ;; tree-sitter ---------------------------------------------------------------------------------------
 (use-package tree-sitter
