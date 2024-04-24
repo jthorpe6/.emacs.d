@@ -975,7 +975,8 @@
   (rust-ts-mode . tree-sitter-hl-mode)
   (rust-mode . eglot-ensure)
   (rust-mode . tree-sitter-hl-mode)
-  :mode (("\\.rs\\'" . rust-mode)))
+  :mode (("\\.rs\\'" . rust-mode))
+  :config (setq rust-format-on-save t))
 
 (use-package cargo
   :ensure t
