@@ -323,6 +323,8 @@
        (propertize " λ")
        (propertize " "))))
   (setq eshell-prompt-regexp "^[^λ]+ λ ")
+  (custom-set-faces
+   '(eshell-prompt ((t (:foreground "white" :background nil)))))
   (setq-default eshell-prompt-function #'jt/eshell-local-prompt-function))
 
 (use-package em-tramp)
