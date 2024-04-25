@@ -898,11 +898,8 @@
 ;; shell ----------------------------------------------------------------------------------------------
 (use-package sh-mode
   :hook (bash-ts-mode . eglot-ensure)
-  (bash-ts-mode . tree-sitter-hl-mode)
   (bash-mode . eglot-ensure)
-  (bash-mode . tree-sitter-hl-mode)
-  (sh-mode . eglot-ensure)
-  (sh-mode . tree-sitter-hl-mode))
+  (sh-mode . eglot-ensure))
 
 ;; python ---------------------------------------------------------------------------------------------
 (defun jt/run-python-doctest ()
@@ -917,12 +914,15 @@
 
 (use-package python
   :ensure t
-  :hook (python-mode . eglot-ensure)
-  (python-mode . tree-sitter-hl-mode))
+  :hook
+  (python-mode . eglot-ensure)
+  (python-ts-mode . eglot-ensure))
+  ;; (python-mode . tree-sitter-hl-mode))
 
 (use-package blacken
   :ensure t
-  :hook (python-mode . blacken-mode))
+  :hook (python-mode . blacken-mode)
+  (python-ts-mode . blacken-mode))
 
 (use-package pyvenv
   :ensure t
@@ -951,13 +951,9 @@
 ;; c/c++ ----------------------------------------------------------------------------------------------
 (use-package c-mode
   :hook (c-ts-mode . eglot-ensure)
-  (c-ts-mode . tree-sitter-hl-mode)
   (c-mode . eglot-ensure)
-  (c-mode . tree-sitter-hl-mode)
   (c++-ts-mode . eglot-ensure)
-  (c++-ts-mode . tree-sitter-hl-mode)
-  (c++-mode . eglot-ensure)
-  (c++-mode . tree-sitter-hl-mode))
+  (c++-mode . eglot-ensure))
 
 ;; golang ---------------------------------------------------------------------------------------------
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
@@ -965,9 +961,7 @@
 (use-package go-mode
   :ensure t
   :hook (go-ts-mode . eglot-ensure)
-  (go-ts-mode . tree-sitter-hl-mode)
   (go-mode . eglot-ensure)
-  (go-mode . tree-sitter-hl-mode)
   :mode (("\\.go\\'" . go-mode)))
 
 (use-package go-dlv
@@ -976,10 +970,9 @@
 ;; rust -----------------------------------------------------------------------------------------------
 (use-package rust-mode
   :ensure t
-  :hook (rust-ts-mode . eglot-ensure)
-  (rust-ts-mode . tree-sitter-hl-mode)
+  :hook
+  (rust-ts-mode . eglot-ensure)
   (rust-mode . eglot-ensure)
-  (rust-mode . tree-sitter-hl-mode)
   :mode (("\\.rs\\'" . rust-mode))
   :config (setq rust-format-on-save t))
 
@@ -996,9 +989,7 @@
 (use-package typescript-mode
   :ensure t
   :hook (typescript-ts-mode . eglot-ensure)
-  (typescript-ts-mode . tree-sitter-hl-mode)
   (typescript-mode . eglot-ensure)
-  (typescript-mode . tree-sitter-hl-mode)
   :mode ("\\.ts\\'" . typescript-mode))
 
 ;; javascript -----------------------------------------------------------------------------------------
@@ -1011,18 +1002,14 @@
 (use-package json-mode
   :ensure t
   :hook (json-ts-mode . eglot-ensure)
-  (json-ts-mode . tree-sitter-hl-mode)
   (json-mode . eglot-ensure)
-  (json-mode . tree-sitter-hl-mode)
   :mode (("\\.json\\'" . json-mode)))
 
 ;; yaml -----------------------------------------------------------------------------------------------
 (use-package yaml-mode
   :ensure t
   :hook (yaml-ts-mode . eglot-ensure)
-  (yaml-ts-mode . tree-sitter-hl-mode)
   (yaml-mode . eglot-ensure)
-  (yaml-mode . tree-sitter-hl-mode)
   :config
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   (add-hook 'yaml-mode-hook
