@@ -857,20 +857,21 @@
   (setq blamer-prettify-time-p t))
 
 ;; tree-sitter ---------------------------------------------------------------------------------------
-(use-package tree-sitter
-  :ensure t
-  :config (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (use-package tree-sitter
+;;   :ensure t
+;;   :config (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-(use-package tree-sitter-langs
-  :ensure t)
+;; (use-package tree-sitter-langs
+;;   :ensure t)
 
 (use-package treesit-auto
-  :ensure t
+  :demand t
   :custom
-  (treesit-auto-install 'prompt))
-  ;; :config
-  ;; (treesit-auto-add-to-auto-mode-alist 'all))
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 
 ;; eglot ----------------------------------------------------------------------------------------------
 (use-package eglot
