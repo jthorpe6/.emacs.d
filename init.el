@@ -1151,7 +1151,8 @@
   (add-to-list 'org-structure-template-alist '("sh" . "src shell :results output"))
   (add-to-list 'org-structure-template-alist '("py" . "src python :results output"))
   (add-to-list 'org-structure-template-alist '("js" . "src js :results output"))
-  (add-to-list 'org-structure-template-alist '("go" . "src go :results output")))
+  (add-to-list 'org-structure-template-alist '("go" . "src go :results output"))
+  (add-to-list 'org-structure-template-alist '("rs" . "src rust")))
 
 (use-package htmlize
   :ensure t)
