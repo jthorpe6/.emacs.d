@@ -389,17 +389,17 @@
   "Set the specific fonts that Emacs should use."
   ;; set default font
   (set-face-attribute 'default nil
-		      :font "JetBrains Mono-12"
+		      :font "Menlo-12"
 		      :weight 'light)
 
   ;; Set monospace font
   (set-face-attribute 'fixed-pitch nil
-                      :font "JetBrains Mono-12"
+                      :font "Menlo-12"
                       :weight 'light)
 
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil
-                      :font "Iosevka Curly-12"
+                      :font "Helvetica-12"
                       :weight 'light))
 
 ;; line numbers
@@ -1031,7 +1031,7 @@
 ;;; org-mode -----------------------------------------------------------------------------------------
 (defun jt/org-mode-fonts ()
   "Set the fonts for `org-mode' to feel like a word processor."
-  (set-face-attribute 'org-document-title nil :font "Iosevka Curly" :weight 'bold :height 1.3)
+  (set-face-attribute 'org-document-title nil :font "Helvetica" :weight 'bold :height 1.3)
 
   (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
@@ -1041,7 +1041,7 @@
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "Iosevka Curly" :weight 'medium :height (cdr face)))
+    (set-face-attribute (car face) nil :font "Helvetica" :weight 'medium :height (cdr face)))
 
   ;; ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
