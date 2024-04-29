@@ -1101,6 +1101,7 @@
 	org-insert-heading-respect-content t
 	org-pretty-entities t
 	org-ellipsis "…"
+	org-log-done 'time
 	;; agenda files
 	org-agenda-files (append '("~/org/agenda.org")
                                  (directory-files-recursively "~/org/journal" "\\.org$"))
