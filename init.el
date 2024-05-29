@@ -45,7 +45,8 @@
 ;;; package repos --------------------------------------------------------------------------------------
 (require 'package)
 (setq package-archives '(("melpa"     . "https://melpa.org/packages/")
-			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			 ("elpa" . "http://elpa.gnu.org/packages/")))
 
 ;;(package-initialize)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
