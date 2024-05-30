@@ -1130,7 +1130,8 @@
 
 (use-package org-modern
   :ensure t
-  :config (with-eval-after-load 'org (global-org-modern-mode)))
+  :config (with-eval-after-load 'org (global-org-modern-mode))
+  (setq org-modern-fold-stars '(("▶" . "▼") ("▷" . "▽") ("⏵" . "⏷") ("▹" . "▿"))))
 
 (use-package org-appear
   :ensure t
