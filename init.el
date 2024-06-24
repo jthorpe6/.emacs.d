@@ -482,7 +482,8 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config (setq doom-modeline-time-icon nil)
-  (setq doom-modeline-buffer-encoding nil))
+  (setq doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-lsp nil))
 
 (use-package highlight-indent-guides
   :ensure t
