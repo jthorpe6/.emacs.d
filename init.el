@@ -188,6 +188,11 @@
     (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
       (when (file-exists-p backup-notes-file)
 	(load backup-notes-file)))))
+;;; avy-zap -------------------------------------------------------------------------------------------
+(use-package avy-zap
+  :ensure t
+  :bind (("M-z" . avy-zap-to-char-dwim)
+	 ("M-Z" . avy-zap-up-to-char-dwim)))
 
 ;;; recentf -------------------------------------------------------------------------------------------
 (use-package recentf
