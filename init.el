@@ -131,7 +131,7 @@
   (global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
   (global-set-key (kbd "C-x .") 'next-buffer)
   (global-set-key (kbd "C-x ,") 'previous-buffer)
-  (global-set-key (kbd "s-j") 'avy-goto-char)
+  (global-set-key (kbd "M-j") 'avy-goto-char)
   (global-unset-key (kbd "C-r")) ;; unset I-search
   
   ;; custom functions
