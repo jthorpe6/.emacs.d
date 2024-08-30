@@ -387,9 +387,7 @@
 
 ;; diminish -------------------------------------------------------------------------------------------
 ;; diminish those minor-mode indicators
-(use-package diminish
-  :ensure t)
-
+(use-package diminish :ensure t)
 (diminish 'visual-line-mode)
 (diminish 'abbrev-mode)
 (diminish 'eldoc-mode)
@@ -505,8 +503,7 @@
 	 ("C-s-p" . mc/mark-previous-like-this)))
 
 ;; nerd-icons everywhere ------------------------------------------------------------------------------
-(use-package nerd-icons
-  :ensure t)
+(use-package nerd-icons :ensure t)
 
 (use-package nerd-icons-ibuffer
   :ensure t
@@ -745,8 +742,7 @@
     (global-set-key (kbd "C-c r") 'consult-ripgrep)
   (global-set-key (kbd "C-c r") 'grep-find))
 
-(use-package rg
-  :ensure t)
+(use-package rg :ensure t)
 
 ;;; dired ---------------------------------------------------------------------------------------------
 (use-package dired
@@ -777,8 +773,7 @@
          ("C-x C-j" . consult-dir-jump-file)))
 
 ;; pdf tools ------------------------------------------------------------------------------------------
-(use-package pdf-tools
-  :ensure t)
+(use-package pdf-tools :ensure t)
 
 ;; chatgpt --------------------------------------------------------------------------------------------
 ;; M-x set-variable chatgpt-shell-openai-key
@@ -878,8 +873,7 @@
 (use-package consult-eglot :ensure t)
 
 ;; docker ---------------------------------------------------------------------------------------------
-(use-package docker
-  :ensure t)
+(use-package docker :ensure t)
 
 (use-package dockerfile-mode
   :ensure t
@@ -940,8 +934,7 @@
   (go-mode . eglot-ensure)
   :mode (("\\.go\\'" . go-mode)))
 
-(use-package go-dlv
-  :ensure t)
+(use-package go-dlv :ensure t)
 
 ;; rust -----------------------------------------------------------------------------------------------
 (use-package rust-mode
@@ -959,8 +952,7 @@
   (rust-mode . cargo-minor-mode))
 
 ;; swift ----------------------------------------------------------------------------------------------
-(use-package swift-mode
-  :ensure t)
+(use-package swift-mode :ensure t)
 
 ;; typescript -----------------------------------------------------------------------------------------
 (use-package typescript-mode
@@ -1123,17 +1115,13 @@
   (add-to-list 'org-structure-template-alist '("go" . "src go :results output"))
   (add-to-list 'org-structure-template-alist '("rs" . "src rust")))
 
-(use-package htmlize
-  :ensure t)
+(use-package htmlize :ensure t)
 
-(use-package ob-async
-  :ensure t)
+(use-package ob-async :ensure t)
 
-(use-package ob-go
-  :ensure t)
+(use-package ob-go :ensure t)
 
-(use-package ob-rust
-  :ensure t)
+(use-package ob-rust :ensure t)
 
 (use-package ox-hugo
   :ensure t
@@ -1146,8 +1134,7 @@
   :config
   (add-hook 'dired-mode-hook 'org-download-enable))
 
-(use-package org-web-tools
-  :ensure t)
+(use-package org-web-tools :ensure t)
 
 ;; note taking with denote ----------------------------------------------------------------------------
 (use-package denote
