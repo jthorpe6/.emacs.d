@@ -64,6 +64,7 @@
   :custom
   (auto-package-update-interval 7)
   (auto-package-update-prompt-before-update t)
+  (auto-package-update-delete-old-versions t)
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
