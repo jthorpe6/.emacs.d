@@ -916,10 +916,8 @@
   (python-ts-mode . eglot-ensure))
   ;; (python-mode . tree-sitter-hl-mode))
 
-(use-package blacken
+(use-package ruff-format
   :ensure t
-  :hook (python-mode . blacken-mode)
-  (python-ts-mode . blacken-mode))
 
 (use-package pyvenv
   :ensure t
@@ -933,6 +931,7 @@
   (setq pyvenv-post-deactivate-hooks
         (list (lambda ()
                 (setq python-shell-interpreter "python3")))))
+  :hook (python-base-mode . ruff-format-on-save-mode))
 
 (use-package pyenv-mode
   :ensure t
