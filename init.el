@@ -909,16 +909,6 @@
   (sh-mode . eglot-ensure))
 
 ;; python ---------------------------------------------------------------------------------------------
-(defun jt/run-python-doctest ()
-  "Run \=python -m doctest -v\= on the current buffer's file."
-  (interactive)
-  (let ((output-buffer (generate-new-buffer "*Python Doctest Output*"))
-        (file (buffer-file-name)))
-    (when (and file (file-exists-p file))
-      (call-process "python3" nil output-buffer nil "-m" "doctest" "-v" file))
-    (with-current-buffer output-buffer
-      (pop-to-buffer output-buffer))))
-
 (use-package python
   :ensure t
   :hook
