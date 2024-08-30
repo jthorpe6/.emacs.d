@@ -912,9 +912,7 @@
 (use-package python
   :ensure t
   :hook
-  (python-mode . eglot-ensure)
-  (python-ts-mode . eglot-ensure))
-  ;; (python-mode . tree-sitter-hl-mode))
+  (python-base-mode . eglot-ensure))
 
 (use-package ruff-format
   :ensure t
