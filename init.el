@@ -927,9 +927,17 @@
   (pyenv-mode))
 
 (use-package pet
-  :ensure t
+  :ensure-system-package (dasel sqlite3)
   :config
-  (add-hook 'python-base-mode-hook 'pet-mode -10))
+  (add-hook 'python-base-mode-hook
+            (lambda ()
+              (setq-local python-shell-interpreter (pet-executable-find "python")
+                          python-shell-virtualenv-root (pet-virtualenv-root))
+              (pet-eglot-setup)
+              (eglot-ensure)
+              (when-let ((ruff-executable (pet-executable-find "ruff")))
+                (setq-local ruff-format-command ruff-executable)
+                (ruff-format-on-save-mode)))))
 
 ;; c/c++ ----------------------------------------------------------------------------------------------
 (use-package c-mode
