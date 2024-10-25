@@ -1093,7 +1093,6 @@
       (add-to-list 'org-babel-load-languages (cons symbol-lang t))
       (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))))
 
-
 (advice-add 'org-babel-execute-src-block :before
             (lambda (&rest _)
               (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
@@ -1119,7 +1118,8 @@
   (add-to-list 'org-structure-template-alist '("py" . "src python :results output"))
   (add-to-list 'org-structure-template-alist '("js" . "src js :results output"))
   (add-to-list 'org-structure-template-alist '("go" . "src go :results output"))
-  (add-to-list 'org-structure-template-alist '("rs" . "src rust")))
+  (add-to-list 'org-structure-template-alist '("rs" . "src rust"))
+  (add-to-list 'org-structure-template-alist '("cc" . "src C ::export results :flags \"\"")))
 
 (use-package htmlize :ensure t)
 
