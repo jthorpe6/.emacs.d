@@ -1084,13 +1084,19 @@
 	org-agenda-current-time-string
 	"◀── now ┄┄┄┄┄┄┄"))
 
-  (defadvice org-babel-execute-src-block (around load-language nil activate)
-    "Load language if needed"
-    (let ((language (org-element-property :language (org-element-at-point))))
-      (unless (cdr (assoc (intern language) org-babel-load-languages))
-	(add-to-list 'org-babel-load-languages (cons (intern language) t))
-	(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
-      ad-do-it))
+(defun load-org-babel-language (lang)
+  "Load org-babel language module with case sensitivity for LANG."
+  (let* ((lang-name (symbol-name lang))
+         (capitalized-lang (if (member lang-name '("c")) "C" lang-name))
+         (symbol-lang (intern capitalized-lang)))
+    (unless (cdr (assoc symbol-lang org-babel-load-languages))
+      (add-to-list 'org-babel-load-languages (cons symbol-lang t))
+      (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))))
+
+
+(advice-add 'org-babel-execute-src-block :before
+            (lambda (&rest _)
+              (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
 
 ;; git submodule org apple notes
 (use-package org-apple-notes
