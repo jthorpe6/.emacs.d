@@ -110,7 +110,7 @@
 
   ;; hooks
   (add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
+            'executable-make-buffer-file-executable-if-script-p)
   
   ;; account for symlinks
   (setq-default find-file-visit-truename t)
@@ -143,19 +143,19 @@
                              (format "pandoc -f markdown -t org -o %s"
                                      (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
   
-   (defadvice jt/mouse-save-then-kill (around mouse2-copy-region activate)
-     (when (region-active-p)
-       (copy-region-as-kill (region-beginning) (region-end)))
-     ad-do-it)
+  (defadvice jt/mouse-save-then-kill (around mouse2-copy-region activate)
+    (when (region-active-p)
+      (copy-region-as-kill (region-beginning) (region-end)))
+    ad-do-it)
 
-   (defun jt/toggle-fullscreen ()
-     (interactive)
-     (set-frame-parameter
-      nil 'fullscreen
-      (if (not (frame-parameter nil 'fullscreen))
-          'fullscreen
-	nil)))
-   
+  (defun jt/toggle-fullscreen ()
+    (interactive)
+    (set-frame-parameter
+     nil 'fullscreen
+     (if (not (frame-parameter nil 'fullscreen))
+         'fullscreen
+       nil)))
+  
   (defun jt/kill-current-buffer ()
     (interactive)
     (kill-buffer (current-buffer)))
@@ -249,7 +249,7 @@
   
   (global-set-key (kbd "C-c t") 'jt/eshell-here)
 
-;; prompt settings ------------------------------------------------------------------------------------
+  ;; prompt settings ------------------------------------------------------------------------------------
   ;; The majority of this has been modified from here
   ;; https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org#special-prompt
   (defun jt/curr-dir-git-branch-string (pwd)
@@ -679,7 +679,7 @@
 (use-package marginalia
   :ensure t
   :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+              ("M-A" . marginalia-cycle))
 
   ;; The :init section is always executed.
   :init
@@ -732,8 +732,8 @@
   :config
   (setq corfu-auto t
 	corfu-quit-no-match 'separator))
-  ;; (custom-set-faces
-  ;;  '(corfu-default ((t (:background "#1e1e2e")))))
+;; (custom-set-faces
+;;  '(corfu-default ((t (:background "#1e1e2e")))))
 
 ;;; grep settings -------------------------------------------------------------------------------------
 (setq grep-command "rg --color=always --no-heading --line-number --smart-case --follow ")
@@ -818,7 +818,7 @@
   :ensure t
   :commands magit-status
   :config
-    (magit-auto-revert-mode 1)
+  (magit-auto-revert-mode 1)
   :init
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
@@ -845,8 +845,8 @@
   (blamer-min-offset 70)
   :custom-face
   (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :italic t)))
+                   :background nil
+                   :italic t)))
   :config
   (setq blamer-prettify-time-p t))
 
@@ -1049,10 +1049,10 @@
   (org-indent-mode 1)
 
   (setq org-agenda-prefix-format
-      '((agenda . " %i %?-12t% s")
-	(todo . " %i %-12:c")
-	(tags . " %i %-12:c%t")
-	(search . " %i %-12:c")))
+	'((agenda . " %i %?-12t% s")
+	  (todo . " %i %-12:c")
+	  (tags . " %i %-12:c%t")
+	  (search . " %i %-12:c")))
   
   (setq org-startup-folded t
 	org-startup-with-inline-images t
@@ -1211,8 +1211,8 @@
     (menu-bar-mode -1)
     (if (display-graphic-p)
         (progn
-        (tool-bar-mode -1)
-        (scroll-bar-mode -1)))
+          (tool-bar-mode -1)
+          (scroll-bar-mode -1)))
     (global-visual-line-mode t)
     (jt/start-org-agenda-update-timer)))
 
