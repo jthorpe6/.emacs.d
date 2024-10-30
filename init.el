@@ -883,6 +883,11 @@
   :config
   (setq dockerfile-build-progress 'plain))
 
+;; aggressive indent ----------------------------------------------------------------------------------
+(use-package aggressive-indent
+  :ensure t
+  :config (global-aggressive-indent-mode 1))
+
 ;; shell ----------------------------------------------------------------------------------------------
 (use-package sh-mode
   :hook (bash-ts-mode . eglot-ensure)
