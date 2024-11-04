@@ -1164,8 +1164,7 @@
   :config
   (when (locate-library "denote")
     (consult-notes-denote-mode))
-  ;; search only for text files in denote dir
-  (setq consult-notes-denote-files-function (function denote-directory-text-only-files))
+  (setq consult-notes-denote-files-function (lambda () (denote-directory-files nil t t)))
 
   (defun jt/consult-notes-search-in-all-notes ()
     (interactive)
