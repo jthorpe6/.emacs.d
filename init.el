@@ -1124,7 +1124,7 @@
   (add-to-list 'org-structure-template-alist '("js" . "src js :results output"))
   (add-to-list 'org-structure-template-alist '("go" . "src go :results output"))
   (add-to-list 'org-structure-template-alist '("rs" . "src rust"))
-  (add-to-list 'org-structure-template-alist '("cc" . "src C ::export results :flags \"\"")))
+  (add-to-list 'org-structure-template-alist '("cc" . "src C :export results :flags \"\"")))
 
 (use-package htmlize :ensure t)
 
