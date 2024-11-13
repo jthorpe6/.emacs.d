@@ -816,6 +816,10 @@
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
 
+(use-package magit-delta
+  :ensure t
+  :hook (magit-mode . magit-delta-mode))
+
 (use-package magit-todos
   :ensure t
   :after magit
