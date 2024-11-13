@@ -775,13 +775,6 @@
 ;; pdf tools ------------------------------------------------------------------------------------------
 (use-package pdf-tools :ensure t)
 
-;; chatgpt --------------------------------------------------------------------------------------------
-;; M-x set-variable chatgpt-shell-openai-key
-(use-package chatgpt-shell
-  :ensure t
-  :custom
-  (chatgpt-shell-api-url-base "https://api.openai.com"))
-
 ;; which key ------------------------------------------------------------------------------------------
 (use-package which-key
   :ensure t
