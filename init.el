@@ -558,6 +558,11 @@
   :bind (("C-;" . jinx-correct)
          ("C-M-;" . jinx-languages)))
 
+;; visual-replace -------------------------------------------------------------------------------------
+(use-package visual-replace
+  :ensure t
+  :bind (("M-r" . visual-replace)))
+         
 ;;; completion and other nice things ------------------------------------------------------------------
 ;; consult --------------------------------------------------------------------------------------------
 (use-package consult
@@ -615,8 +620,7 @@
          ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
          ;; Minibuffer history
          :map minibuffer-local-map
-         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history))                 ;; orig. previous-matching-history-element
+         ("M-s" . consult-history))                 ;; orig. next-matching-history-element
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
