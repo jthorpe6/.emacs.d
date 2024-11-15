@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: unk-members
+# key: <unk
+# --
+
+#+begin_src python :results output
+  for i in range(8,0x$0+8,8):
+      print(f"uint64_t unk_{i:X};")
+#+end_src
