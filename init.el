@@ -871,7 +871,9 @@
   (add-to-list 'eglot-server-programs '(objc-mode . ("ccls"))))
 
 ;; consult-eglot --------------------------------------------------------------------------------------
-(use-package consult-eglot :ensure t)
+(use-package consult-eglot
+  :ensure t
+  :bind (("C-L" . consult-eglot-symbols)))
 
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker :ensure t)
