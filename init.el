@@ -808,7 +808,9 @@
   :config
   (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-(use-package consult-yasnippet :ensure t)
+(use-package consult-yasnippet
+  :ensure t
+  :bind (("C-c C-y" . consult-yasnippet)))
 
 ;; git -----------------------------------------------------------------------------------------------
 (use-package magit
