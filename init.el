@@ -864,13 +864,13 @@
 
 ;; eglot ----------------------------------------------------------------------------------------------
 (use-package eglot
-  :ensure t
-  :config
-  (add-to-list 'eglot-server-programs '(c-ts-mode . ("ccls")))
-  (add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
-  (add-to-list 'eglot-server-programs '(c++-ts-mode . ("ccls")))
-  (add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
-  (add-to-list 'eglot-server-programs '(objc-mode . ("ccls"))))
+  :ensure t )
+;; :config
+;; (add-to-list 'eglot-server-programs '(c-ts-mode . ("ccls")))
+;; (add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
+;; (add-to-list 'eglot-server-programs '(c++-ts-mode . ("ccls")))
+;; (add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
+;; (add-to-list 'eglot-server-programs '(objc-mode . ("ccls"))))
 
 ;; consult-eglot --------------------------------------------------------------------------------------
 (use-package consult-eglot :ensure t)
