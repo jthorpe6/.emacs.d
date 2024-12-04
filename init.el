@@ -875,6 +875,17 @@
 ;; consult-eglot --------------------------------------------------------------------------------------
 (use-package consult-eglot :ensure t)
 
+;; debugging ------------------------------------------------------------------------------------------
+(use-package realgud :ensure t)
+(use-package realgud-lldb
+  :ensure t
+  :after realgud
+  :config
+  (let ((cask-dir (expand-file-name "~/.cask")))
+    (unless (file-directory-p cask-dir)
+      (shell-command
+       (format "git clone https://github.com/cask/cask %s" cask-dir)))))
+
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker :ensure t)
 
