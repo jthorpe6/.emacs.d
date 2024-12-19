@@ -27,10 +27,6 @@
 ;;; Commentary:
 
 ;; This file is my Emacs configuration.
-;; I have three zsh aliases to run Emacs and the Emacs client, they are:
-;;    alias ec='emacsclient -nw -c -s ~/.emacs.d/server/server' # Primarily used in the terminal
-;;    alias ecc='emacsclient -n -c -s ~/.emacs.d/server/server' # Primarily used to call the gui
-;;    alias emacs='emacs --daemon' # Used to start the Emacs daemon
 
 ;;; Code:
 
@@ -72,6 +68,10 @@
 ;;; Emacs ----------------------------------------------------------------------------------------------
 (use-package emacs
   :config
+  ;; main window settings
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  
   ;; frame settings
   (toggle-frame-maximized)
   
@@ -189,6 +189,13 @@
     (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
       (when (file-exists-p backup-notes-file)
 	(load backup-notes-file)))))
+
+;;; server --------------------------------------------------------------------------------------------
+(use-package server
+  :config
+  (load "server")
+  (unless (server-running-p) (server-start)))
+
 ;;; avy-zap -------------------------------------------------------------------------------------------
 (use-package avy-zap
   :ensure t
