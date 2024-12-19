@@ -1228,7 +1228,6 @@
     (load-theme 'doom-xcode t)
     (set-window-margins nil 15)
     (setq column-number-mode t)
-    (menu-bar-mode -1)
     (if (display-graphic-p)
         (progn
           (tool-bar-mode -1)
