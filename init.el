@@ -416,7 +416,7 @@
   (set-face-attribute 'variable-pitch nil
                       :font "Helvetica-12"
                       :weight 'light))
-
+(jt/set-fonts)
 ;; line numbers
 (setq display-line-numbers-type 'relative)
 
