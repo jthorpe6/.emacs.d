@@ -739,12 +739,11 @@
   (eglot-tempel-mode t))
 
 ;; corfu ---------------------------------------------------------------------------------------------
-;; important here is the `corfu-face' variable to make it fit with the theme
 (use-package corfu
   :ensure t
   :custom
   (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto-prefix 3)
+  (corfu-auto-prefix 1)
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
