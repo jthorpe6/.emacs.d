@@ -841,6 +841,12 @@
   :config
   (setq blamer-prettify-time-p t))
 
+(use-package consult-ls-git
+  :ensure t
+  :bind
+  (("C-c g f" . #'consult-ls-git)
+   ("C-c g F" . #'consult-ls-git-other-window)))
+
 ;; tree-sitter ---------------------------------------------------------------------------------------
 (use-package treesit-auto
   :demand t
