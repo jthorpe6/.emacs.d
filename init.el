@@ -691,8 +691,6 @@
   :ensure t
   :bind (:map minibuffer-local-map
               ("M-A" . marginalia-cycle))
-
-  ;; The :init section is always executed.
   :init
   (marginalia-mode))
 
@@ -707,24 +705,9 @@
 ;; cape -----------------------------------------------------------------------------------------------
 (use-package cape
   :ensure t
-  :bind (("C-c p p" . completion-at-point) ;; capf
-         ("C-c p t" . complete-tag)        ;; etags
-         ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
-         ("C-c p h" . cape-history)
-         ("C-c p f" . cape-file)
-         ("C-c p k" . cape-keyword)
-         ("C-c p s" . cape-elisp-symbol)
-         ("C-c p e" . cape-elisp-block)
-         ("C-c p a" . cape-abbrev)
-         ("C-c p l" . cape-line)
-         ("C-c p w" . cape-dict)
-         ("C-c p :" . cape-emoji)
-         ("C-c p \\" . cape-tex)
-         ("C-c p _" . cape-tex)
-         ("C-c p ^" . cape-tex)
-         ("C-c p &" . cape-sgml)
-         ("C-c p r" . cape-rfc1345))
+  :bind ("C-c p" . cape-prefix-map)
   :init
+  (add-hook 'completion-at-point-functions #'cape-abbrev) ;; adds templates to corfu
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
@@ -743,8 +726,6 @@
   :config
   (setq corfu-auto t
 	corfu-quit-no-match 'separator))
-;; (custom-set-faces
-;;  '(corfu-default ((t (:background "#1e1e2e")))))
 
 ;;; grep settings -------------------------------------------------------------------------------------
 (setq grep-command "rg --color=always --no-heading --line-number --smart-case --follow ")
@@ -870,16 +851,7 @@
   (global-treesit-auto-mode))
 
 ;; eglot ----------------------------------------------------------------------------------------------
-(use-package eglot
-  :ensure t )
-;; :config
-;; (add-to-list 'eglot-server-programs '(c-ts-mode . ("ccls")))
-;; (add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
-;; (add-to-list 'eglot-server-programs '(c++-ts-mode . ("ccls")))
-;; (add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
-;; (add-to-list 'eglot-server-programs '(objc-mode . ("ccls"))))
-
-;; consult-eglot --------------------------------------------------------------------------------------
+(use-package eglot  :ensure t )
 (use-package consult-eglot :ensure t)
 
 ;; debugging ------------------------------------------------------------------------------------------
