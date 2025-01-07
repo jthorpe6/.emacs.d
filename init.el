@@ -775,32 +775,7 @@
   :diminish 'which-key-mode)
 
 ;;; programming ---------------------------------------------------------------------------------------
-
-;; yasnippet ------------------------------------------------------------------------------------------
-(use-package yasnippet
-  :ensure t
-  :diminish yas-minor-mode
-  :config
-  (yas-global-mode 1)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-  :hook
-  (prog-mode . yas-minor-mode))
-
-(use-package yasnippet-snippets
-  :ensure t
-  :after yasnippet)
-
-(use-package yasnippet-capf
-  :ensure t
-  :after cape
-  :config
-  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
-
-(use-package consult-yasnippet
-  :ensure t
-  :bind (("C-c C-y" . consult-yasnippet)))
-
-;; git -----------------------------------------------------------------------------------------------
+;; git ------------------------------------------------------------------------------------------------
 (use-package magit
   :ensure t
   :commands magit-status

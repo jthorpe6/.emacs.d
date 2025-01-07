@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: org-apple-notes
-# key: <appl
-# --
-#+APPLE-NOTES-ACCOUNT: iCloud
-#+APPLE-NOTES-FOLDER: $0
-#+APPLE-NOTES-TITLE: 
