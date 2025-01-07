@@ -1,0 +1,10 @@
+org-mode
+
+(unk & "#+begin_src python :results output" n> "for i in range\(8,0x" p "+8,8\):" n> "    print\(f'uint64_t unk_{i:X};'\)" n "#+end_src")
+(mdexport & "#+OPTIONS: toc:nil" n "# Local variables:" n "# eval: \(add-hook 'after-save-hook 'org-md-export-to-markdown t t\)" n "# end:")
+(applenotes & "#+APPLE-NOTES-ACCOUNT: iCloud" n "#+APPLE-NOTES-FOLDER: " p n "#+APPLE-NOTES-TITLE:")
+
+;; Local Variables:
+;; mode: lisp-data
+;; outline-regexp: "[a-z]"
+;; End:
