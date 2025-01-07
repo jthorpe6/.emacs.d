@@ -712,6 +712,32 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
+;; tempel ---------------------------------------------------------------------------------------------
+(use-package tempel
+  :ensure t
+  :bind (("M-+" . tempel-complete)
+         ("M-*" . tempel-insert))
+  :init
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
+  (add-hook 'conf-mode-hook 'tempel-setup-capf)
+  (add-hook 'prog-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf)
+
+  (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
+  (global-tempel-abbrev-mode))
+
+(use-package tempel-collection :ensure t)
+
+(use-package eglot-tempel
+  :ensure t
+  :after eglot
+  :init
+  (eglot-tempel-mode t))
+
 ;; corfu ---------------------------------------------------------------------------------------------
 ;; important here is the `corfu-face' variable to make it fit with the theme
 (use-package corfu
