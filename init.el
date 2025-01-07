@@ -420,11 +420,11 @@
 ;; line numbers
 (setq display-line-numbers-type 'relative)
 
-;; Enable line numbers for some modes
+;; Enable line numbers and highlight for some modes
 (dolist (mode '(text-mode-hook
                 prog-mode-hook
                 conf-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 1))))
+  (add-hook mode (lambda () (display-line-numbers-mode 1)(hl-line-mode 1))))
 
 ;; Override some modes which derive from the above
 (dolist (mode '(vterm-mode-hook
@@ -435,7 +435,7 @@
 		help-mode-hook
 		man-mode-hook
 		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+  (add-hook mode (lambda () (display-line-numbers-mode 0)(hl-line-mode 0))))
 
 ;; set the border width
 (add-to-list 'default-frame-alist '(internal-border-width . 7))
