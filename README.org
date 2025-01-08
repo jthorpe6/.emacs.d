@@ -7,11 +7,3 @@ I've done whole literate configuration, and I've also done the having multiple =
 #+begin_src shell :results output
   git clone --recurse-submodules https://github.com/jthorpe6/.emacs.d.git ~/.emacs.d/
 #+end_src
-
-I also have some handy =aliases= for running =emacs=
-
-#+begin_src shell :results output
-  alias ec='emacsclient -nw -c -s ~/.emacs.d/server/server'
-  alias ecc='emacsclient -n -c -s ~/.emacs.d/server/server'
-  alias emacs='emacs --daemon'
-#+end_src
