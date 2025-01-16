@@ -857,7 +857,17 @@
   (global-treesit-auto-mode))
 
 ;; eglot ----------------------------------------------------------------------------------------------
-(use-package eglot  :ensure t )
+(use-package eglot
+  :ensure t
+  :config
+  (defun jt/eglot-capf ()
+    (setq-local completion-at-point-functions
+		(list (cape-capf-super
+                       #'eglot-completion-at-point
+                       #'tempel-expand
+                       #'cape-file))))
+
+  (add-hook 'eglot-managed-mode-hook #'jt/eglot-capf))
 (use-package consult-eglot :ensure t)
 
 ;; debugging ------------------------------------------------------------------------------------------
