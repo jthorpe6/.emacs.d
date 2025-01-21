@@ -190,6 +190,10 @@
       (when (file-exists-p backup-notes-file)
 	(load backup-notes-file)))))
 
+;;; savehist ------------------------------------------------------------------------------------------
+(use-package savehist
+  :hook (after-init . savehist-mode))
+
 ;;; server --------------------------------------------------------------------------------------------
 (use-package server
   :config
