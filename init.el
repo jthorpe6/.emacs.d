@@ -1125,6 +1125,15 @@
   :ensure nil
   :load-path "~/.emacs.d/org-apple-notes/")
 
+(use-package ob-idapython
+  :if (file-directory-p "~/.emacs.d/ob-idapython/")
+  :load-path "~/.emacs.d/ob-idapython/"
+  :after org
+  :config
+  (add-to-list 'org-babel-load-languages '(idapython . t))
+  (add-to-list 'org-src-lang-modes '("idapython" . python))
+  (require 'ob-idapython))
+
 (use-package org-modern
   :ensure t
   :config (with-eval-after-load 'org (global-org-modern-mode))
