@@ -872,6 +872,9 @@
                        #'cape-file))))
 
   (add-hook 'eglot-managed-mode-hook #'jt/eglot-capf))
+;; (add-to-list 'eglot-server-programs
+;;              '((python-base-mode)
+;; 		 "basedpyright-langserver" "--stdio"))
 (use-package consult-eglot :ensure t)
 
 ;; debugging ------------------------------------------------------------------------------------------
