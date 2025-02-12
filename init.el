@@ -810,6 +810,8 @@
   :commands magit-status
   :config
   (magit-auto-revert-mode 1)
+  :custom
+  (magit-format-file-function #'magit-format-file-nerd-icons)
   :init
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
