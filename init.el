@@ -866,17 +866,27 @@
 (use-package eglot
   :ensure t
   :config
+  (defun jt/custom-eglot-hover (cb)
+    "Same as `eglot-hover-eldoc-function`, but throw away its short :echo cookie."
+    (eglot-hover-eldoc-function (lambda (info &rest _ignore)
+                                  (funcall cb info))))
+
+  ;; Custom function for completion at point
   (defun jt/eglot-capf ()
     (setq-local completion-at-point-functions
-		(list (cape-capf-super
+                (list (cape-capf-super
                        #'eglot-completion-at-point
                        #'tempel-expand
                        #'cape-file))))
 
-  (add-hook 'eglot-managed-mode-hook #'jt/eglot-capf))
-;; (add-to-list 'eglot-server-programs
-;;              '((python-base-mode)
-;; 		 "basedpyright-langserver" "--stdio"))
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              (setq-local eldoc-documentation-functions 
+                          (cl-substitute #'jt/custom-eglot-hover
+                                         'eglot-hover-eldoc-function 
+                                         eldoc-documentation-functions))
+              (jt/eglot-capf))))
+
 (use-package consult-eglot :ensure t)
 
 ;; debugging ------------------------------------------------------------------------------------------
