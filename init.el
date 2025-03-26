@@ -804,10 +804,12 @@
   :diminish 'which-key-mode)
 
 ;;; programming ---------------------------------------------------------------------------------------
+
 ;; diffing --------------------------------------------------------------------------------------------
 (use-package difftastic
   :ensure-system-package (difft)
   :ensure t)
+
 ;; git ------------------------------------------------------------------------------------------------
 (use-package magit
   :ensure t
@@ -903,6 +905,9 @@
     (unless (file-directory-p cask-dir)
       (shell-command
        (format "git clone https://github.com/cask/cask %s" cask-dir)))))
+
+;; just -----------------------------------------------------------------------------------------------
+(use-package just-mode :ensure t)
 
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker :ensure t)
