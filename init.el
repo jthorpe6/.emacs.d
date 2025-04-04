@@ -941,6 +941,11 @@
   :ensure t
   :hook (python-base-mode . ruff-format-on-save-mode))
 
+(use-package uv-mode
+  :ensure-system-package (uv)
+  :ensure t
+  :hook (python-base-mode . uv-mode-auto-activate-hook))
+
 (use-package pyenv-mode
   :ensure t
   :config
