@@ -767,9 +767,6 @@
 ;;; grep settings -------------------------------------------------------------------------------------
 (setq grep-command "rg --color=always --no-heading --line-number --smart-case --follow ")
 (setq grep-find-command "rg --color=always --no-heading --line-number --smart-case --follow --context=5 ")
-(if (require 'consult nil 'noerror)
-    (global-set-key (kbd "C-c r") 'consult-ripgrep)
-  (global-set-key (kbd "C-c r") 'grep-find))
 
 (use-package rg :ensure t)
 
