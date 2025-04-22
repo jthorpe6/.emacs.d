@@ -940,7 +940,40 @@
 (use-package python
   :ensure t
   :hook
-  (python-base-mode . eglot-ensure))
+  (python-base-mode . jt/choose-python-lsp)
+  :config
+  (defvar jt/python-lsp-per-project (make-hash-table :test 'equal))
+
+  (defun jt/get-project-root ()
+    (if (fboundp 'project-current)
+        (when-let ((project (project-current)))
+          (expand-file-name (project-root project)))
+      default-directory))
+
+  (defun jt/choose-python-lsp ()
+    (let* ((project-root (or (jt/get-project-root) default-directory))
+           (cached (gethash project-root jt/python-lsp-per-project)))
+      (unless cached
+        (let* ((choice (completing-read
+                        (format "Select Python LSP for project (%s): " project-root)
+                        '("pyright" "basedpyright" "ruff") nil t))
+               (server-cmd (pcase choice
+                             ("pyright"       '("pyright-langserver" "--stdio"))
+                             ("basedpyright"  '("basedpyright-langserver" "--stdio"))
+                             ("ruff"          '("ruff" "server")))))
+          (puthash project-root server-cmd jt/python-lsp-per-project)
+          (setq cached server-cmd)))
+      (setq-local eglot-server-programs
+                  `((python-base-mode . ,cached)))
+      (eglot-ensure)))
+
+  (defun jt/switch-python-lsp ()
+    (interactive)
+    (let ((project-root (or (jt/get-project-root) default-directory)))
+      (remhash project-root jt/python-lsp-per-project)
+      (when (eglot-current-server)
+        (eglot-shutdown (eglot-current-server)))
+      (jt/choose-python-lsp))))
 
 (use-package ruff-format
   :ensure t
