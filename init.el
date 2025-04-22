@@ -111,6 +111,8 @@
   ;; hooks
   (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
+  (add-hook 'emacs-startup-hook #'jt/start-org-agenda-update-timer)
+
   
   ;; account for symlinks
   (setq-default find-file-visit-truename t)
