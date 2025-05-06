@@ -1050,6 +1050,7 @@
 (use-package js2-mode
   :ensure t
   :hook (javascript-mode . eglot-ensure)
+  (js-ts-mode . eglot-ensure)
   :mode ("\\.js\\'" . js2-mode))
 
 ;; json -----------------------------------------------------------------------------------------------
