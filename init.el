@@ -1206,6 +1206,11 @@
   :ensure t
   :hook (org-mode . org-appear-mode))
 
+(use-package org-transclusion
+  :ensure t
+  :after org
+  :bind ("<f12>" . org-transclusion-add))
+
 (use-package org-tempo
   :config
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
