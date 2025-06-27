@@ -1169,6 +1169,7 @@
 
 ;; git submodule org apple notes
 (use-package org-apple-notes
+  :if (file-directory-p "~/.emacs.d/ob-idapython/")
   :ensure nil
   :load-path "~/.emacs.d/org-apple-notes/")
 
