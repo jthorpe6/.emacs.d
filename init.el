@@ -111,7 +111,7 @@
   ;; hooks
   (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
-  (add-hook 'emacs-startup-hook #'jt/start-org-agenda-update-timer)
+  ;; (add-hook 'emacs-startup-hook #'jt/start-org-agenda-update-timer)
 
   
   ;; account for symlinks
@@ -1097,20 +1097,6 @@
   (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-verbatim nil :inherit 'org-code))
 
-(defvar jt/org-agenda-update-timer nil
-  "Timer for updating org-agenda-files.")
-
-(defun jt/update-org-agenda-files ()
-  "Update org-agenda-files when a new org file is added to ~/org/journal."
-  (setq org-agenda-files
-        (append '("~/org/agenda.org")
-                (directory-files-recursively "~/org/journal" "\\.org$"))))
-
-(defun jt/start-org-agenda-update-timer ()
-  "Start a timer to periodically update org-agenda-files."
-  (setq jt/org-agenda-update-timer
-        (run-with-timer 0 300 'jt/update-org-agenda-files)))
-
 (defun jt/org-mode-setup ()
   "Initialise custom `org-mode' setup."
   (jt/org-mode-fonts)
@@ -1157,9 +1143,7 @@
 	org-pretty-entities t
 	org-ellipsis "…"
 	org-log-done 'time
-	;; agenda files
-	org-agenda-files (append '("~/org/agenda.org")
-                                 (directory-files-recursively "~/org/journal" "\\.org$"))
+	org-agenda-files "~/org/agenda.org"
 	;; agenda styling
 	org-agenda-tags-column 0
 	org-agenda-block-separator ?─
@@ -1267,33 +1251,6 @@
 	(consult-notes-search-in-all-notes)
       (consult-notes))))
 
-(defun jt/denote-journal ()
-  "Create an entry tagged `journal' with the date as its title."
-  (interactive)
-  (denote
-   (format-time-string "%A %e %B %Y")
-   '("journal")
-   nil
-   "~/org/journal/"))
-
-(with-eval-after-load 'org-capture
-  (add-to-list 'org-capture-templates
-	       '("n" "New note" plain
-		 (file denote-last-path)
-		 #'denote-org-capture
-		 :no-save t
-		 :immediate-finish nil
-		 :kill-buffer t
-		 :jump-to-captured t)))
-
-(with-eval-after-load 'org-capture
-  (add-to-list 'org-capture-templates
-               '("j" "Journal entry" plain (nil)
-		 #'jt/denote-journal
-		 :immediate-finish t
-		 :kill-buffer t
-		 :jump-to-captured t)))
-
 ;;; Emacs client settings -----------------------------------------------------------------------------
 (defun jt/emacs-client-settings (frame)
   "Settings that need to be set in the Emacs client this takes the FRAME argument."
@@ -1306,8 +1263,7 @@
         (progn
           (tool-bar-mode -1)
           (scroll-bar-mode -1)))
-    (global-visual-line-mode t)
-    (jt/start-org-agenda-update-timer)))
+    (global-visual-line-mode t)))
 
 (add-hook 'after-make-frame-functions #'jt/emacs-client-settings)
 
