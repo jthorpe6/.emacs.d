@@ -1074,10 +1074,21 @@
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
+  :init (setq markdown-command "pandoc")
+  (setq markdown-fontify-code-blocks-natively t)
+  (setq markdown-hide-urls nil)
   :hook (markdown-mode . eglot-ensure)
   :bind (:map markdown-mode-map
               ("C-c C-e" . markdown-do)))
+
+(defun jt/markdown-to-pdf ()
+  "Export current markdown file to PDF using Pandoc."
+  (interactive)
+  (let ((output (concat (file-name-sans-extension (buffer-file-name)) ".pdf")))
+    (shell-command (format "pandoc %s -o %s"
+                           (shell-quote-argument (buffer-file-name))
+                           (shell-quote-argument output)))
+    (message "Exported to %s" output)))
 
 ;;; org-mode -----------------------------------------------------------------------------------------
 (defun jt/org-mode-fonts ()
@@ -1216,6 +1227,8 @@
 (use-package ob-go :ensure t)
 
 (use-package ob-rust :ensure t)
+
+(use-package ox-gfm :ensure t)
 
 (use-package ox-hugo
   :ensure t
