@@ -1072,9 +1072,12 @@
 
 ;; markdown ------------------------------------------------------------------------------------------
 (use-package markdown-mode
-  :mode "\\.md\\'"
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
   :hook (markdown-mode . eglot-ensure)
-  :ensure t)
+  :bind (:map markdown-mode-map
+              ("C-c C-e" . markdown-do)))
 
 ;;; org-mode -----------------------------------------------------------------------------------------
 (defun jt/org-mode-fonts ()
