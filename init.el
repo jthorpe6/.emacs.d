@@ -1142,6 +1142,7 @@
   (setq org-startup-folded t
 	org-startup-with-inline-images t
 	org-export-with-section-numbers nil
+	org-export-with-toc nil
 	org-hide-emphasis-markers t ;; Just the Italics
 	org-hide-leading-stars t
 	org-src-fontify-natively t
