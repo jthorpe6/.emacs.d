@@ -1090,6 +1090,10 @@
                            (shell-quote-argument output)))
     (message "Exported to %s" output)))
 
+;; Disable smartparens auto-pairing for backticks in markdown-mode
+(with-eval-after-load 'smartparens
+  (sp-local-pair 'markdown-mode "`" nil :actions nil))
+
 ;;; org-mode -----------------------------------------------------------------------------------------
 (defun jt/org-mode-fonts ()
   "Set the fonts for `org-mode' to feel like a word processor."
