@@ -823,6 +823,7 @@
   (magit-auto-revert-mode 1)
   :custom
   (magit-format-file-function #'magit-format-file-nerd-icons)
+  (magit-git-executable (executable-find "git"))
   :init
   (add-hook 'magit-mode-hook 'magit-load-config-extensions)
   :bind)
