@@ -90,8 +90,6 @@
         make-pointer-invisible t
         inhibit-startup-message t
 	use-short-answers t ;; assume Emacs >=28
-	sentence-end-double-space nil ;; sentences end with 1 space not two
-        standard-indent 2
         column-number-mode t
         create-lockfiles nil
         make-backup-files nil
@@ -108,15 +106,16 @@
 	explicit-shell-file-name "/bin/bash"
 	shell-file-name "/bin/bash")
 
+  (setq-default standard-indent 2
+		find-file-visit-truename t ;; account for symlinks
+		sentence-end-double-space nil ;; sentences end with 1 space not two
+		display-fill-column-indicator-column 120)
+  
   ;; hooks
   (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
   ;; (add-hook 'emacs-startup-hook #'jt/start-org-agenda-update-timer)
 
-  
-  ;; account for symlinks
-  (setq-default find-file-visit-truename t)
-  
   ;; Buffer and window management
   (global-auto-revert-mode t)
   (set-window-margins nil 15)
