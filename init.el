@@ -1052,6 +1052,10 @@
   (c++-ts-mode . eglot-ensure)
   (c++-mode . eglot-ensure))
 
+;; objective-c ----------------------------------------------------------------------------------------
+(use-package objc-mode
+  :hook (objc-mode . eglot-ensure))
+
 ;; golang ---------------------------------------------------------------------------------------------
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
 
