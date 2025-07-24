@@ -462,6 +462,9 @@
 ;; set the border width
 (add-to-list 'default-frame-alist '(internal-border-width . 7))
 
+;; turn on fill-colum by default for prog-mode
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
 ;; change the cursor to a bar
 (setq-default cursor-type 'bar)
 
