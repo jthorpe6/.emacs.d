@@ -394,9 +394,26 @@
   :bind
   (("C-!" . jt/multi-vterm-here)))
 
+;; (defun jt/set-exec-path-from-shell-PATH ()
+;;   "Set up Emacs' `exec-path' and PATH environment variable to match
+;; that used by the user's shell.
+
+;; This is particularly useful under Mac OS X and macOS, where GUI
+;; apps are not started from a shell."
+;;   (interactive)
+;;   (let ((path-from-shell (replace-regexp-in-string
+;; 			  "[ \t\n]*$" "" (shell-command-to-string
+;; 					  "$SHELL -i -c 'echo $PATH'"
+;; 					  ))))
+;;     (setenv "PATH" path-from-shell)
+;;     (setq exec-path (split-string path-from-shell path-separator))))
+
+;; (jt/set-exec-path-from-shell-PATH)
+
 (use-package exec-path-from-shell
   :ensure t
-  :init (exec-path-from-shell-initialize))
+  :init (exec-path-from-shell-initialize)
+  :config (setq exec-path-from-shell-arguments '("-i" "-c")))
 
 ;; diminish -------------------------------------------------------------------------------------------
 ;; diminish those minor-mode indicators
@@ -784,6 +801,11 @@
   :config
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+(use-package dired-git-info
+  :ensure t
+  :bind (:map dired-mode-map
+              (")" . dired-git-info-mode)))
 
 (use-package async
   :ensure t
