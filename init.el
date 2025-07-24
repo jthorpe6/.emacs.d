@@ -807,6 +807,24 @@
   :bind (:map dired-mode-map
               (")" . dired-git-info-mode)))
 
+(use-package dired-preview
+  :ensure t
+  :config
+  (setq dired-preview-delay 0.7)
+  (setq dired-preview-max-size (expt 2 20))
+  (setq dired-preview-ignored-extensions-regexp
+	(concat "\\."
+		"\\(gz\\|"
+		"zst\\|"
+		"tar\\|"
+		"xz\\|"
+		"rar\\|"
+		"zip\\|"
+		"iso\\|"
+		"epub\\|"
+		"ipa\\|"
+		"\\)")))
+
 (use-package async
   :ensure t
   :init (dired-async-mode)
