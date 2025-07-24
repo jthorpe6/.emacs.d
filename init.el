@@ -1210,7 +1210,7 @@
 	org-pretty-entities t
 	org-ellipsis "…"
 	org-log-done 'time
-	org-agenda-files "~/org/agenda.org"
+	org-agenda-files '("~/org/agenda.org")
 	;; agenda styling
 	org-agenda-tags-column 0
 	org-agenda-block-separator ?─
