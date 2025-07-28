@@ -910,6 +910,7 @@
 
 ;; tree-sitter ---------------------------------------------------------------------------------------
 (use-package treesit-auto
+  :ensure t
   :demand t
   :custom
   (treesit-auto-install 'prompt)
@@ -1035,6 +1036,7 @@
   (pyenv-mode))
 
 (use-package pet
+  :ensure t
   :ensure-system-package (dasel sqlite3)
   :config
   (add-hook 'python-base-mode-hook
