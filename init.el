@@ -1175,11 +1175,11 @@ apps are not started from a shell."
 
 (use-package org
   :hook (org-mode . jt/org-mode-setup)
-  :bind
-  (("C-c a" . org-agenda)
-   ("C-c c" . org-capture)
-   ("C-c s" . org-schedule)
-   ("C-c d" . org-deadline))
+  :bind (("C-c a" . org-agenda)
+	 ("C-c c" . org-capture))
+  (:map org-mode-map
+	(("C-c s" . org-schedule)
+	 ("C-c d" . org-deadline)))
   :config
   (org-indent-mode 1)
 
@@ -1280,7 +1280,7 @@ apps are not started from a shell."
 (use-package org-transclusion
   :ensure t
   :after org
-  :bind ("<f12>" . org-transclusion-add))
+  :bind (:map org-mode-map ("<f12>" . org-transclusion-add)))
 
 (use-package org-tempo
   :config
@@ -1318,7 +1318,7 @@ apps are not started from a shell."
 
 (use-package org-download
   :ensure t
-  :bind ("C-c o d" . org-download-clipboard)
+  :bind (:map org-mode-map ("C-c o d" . org-download-clipboard))
   :config
   (add-hook 'dired-mode-hook 'org-download-enable))
 
