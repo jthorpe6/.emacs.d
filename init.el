@@ -1200,7 +1200,6 @@ apps are not started from a shell."
 	org-capture-bookmark nil ;; capture notes are not bookmarks
 	org-html-postamble nil
 	org-babel-python-command "python3"
-	org-confirm-babel-evaluate nil
 	org-agenda-remove-tags t
 	org-agenda-skip-scheduled-if-done t
 	org-agenda-skip-deadline-if-done t
@@ -1223,18 +1222,36 @@ apps are not started from a shell."
 	org-agenda-current-time-string
 	"◀── now ┄┄┄┄┄┄┄"))
 
-(defun load-org-babel-language (lang)
-  "Load org-babel language module with case sensitivity for LANG."
-  (let* ((lang-name (symbol-name lang))
-         (capitalized-lang (if (member lang-name '("c")) "C" lang-name))
-         (symbol-lang (intern capitalized-lang)))
-    (unless (cdr (assoc symbol-lang org-babel-load-languages))
-      (add-to-list 'org-babel-load-languages (cons symbol-lang t))
-      (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))))
+;; (defun load-org-babel-language (lang)
+;;   "Load org-babel language module with case sensitivity for LANG."
+;;   (let* ((lang-name (symbol-name lang))
+;;          (capitalized-lang (if (member lang-name '("c")) "C" lang-name))
+;;          (symbol-lang (intern capitalized-lang)))
+;;     (unless (cdr (assoc symbol-lang org-babel-load-languages))
+;;       (add-to-list 'org-babel-load-languages (cons symbol-lang t))
+;;       (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))))
 
-(advice-add 'org-babel-execute-src-block :before
-            (lambda (&rest _)
-              (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
+;; (advice-add 'org-babel-execute-src-block :before
+;;             (lambda (&rest _)
+;;               (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
+
+(use-package ob
+  :demand t
+  :bind (:map org-mode-map
+              ("C-c C-c" . org-ctrl-c-ctrl-c))
+  :custom
+  (org-export-babel-evaluate nil)
+  (org-confirm-babel-evaluate t)
+  :config
+  ;; Keep at the top and let other packages append to `org-babel-load-languages'.
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (sh . nil)
+     (python . t)
+     (js . t)
+     (C . t))))
 
 ;; git submodule org apple notes
 (use-package org-apple-notes
@@ -1279,9 +1296,18 @@ apps are not started from a shell."
 
 (use-package ob-async :ensure t)
 
-(use-package ob-go :ensure t)
+(use-package ob-go
+  :ensure t
+  :config
+  (append org-babel-load-languages
+          '((go . t))))
 
-(use-package ob-rust :ensure t)
+(use-package ob-rust
+  :ensure t
+  :config
+  (append org-babel-load-languages
+          '((rust . t))))
+
 
 (use-package ox-gfm :ensure t)
 
