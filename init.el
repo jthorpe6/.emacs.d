@@ -183,13 +183,7 @@
     (interactive)
     (if (region-active-p)
         (comment-or-uncomment-region (region-beginning) (region-end))
-      (comment-line 1)))
-
-  (defun jt/load-backup-notes ()
-    "Load the backup-notes.el file if it exists."
-    (let ((backup-notes-file "~/.emacs.d/backup-notes.el"))
-      (when (file-exists-p backup-notes-file)
-	(load backup-notes-file)))))
+      (comment-line 1))))
 
 ;;; savehist ------------------------------------------------------------------------------------------
 (use-package savehist
