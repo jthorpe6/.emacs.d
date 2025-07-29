@@ -1259,7 +1259,7 @@ apps are not started from a shell."
   :bind (:map org-mode-map
               ("C-c C-c" . org-ctrl-c-ctrl-c))
   :custom
-  (org-export-babel-evaluate nil)
+  (org-export-babel-evaluate t)
   (org-confirm-babel-evaluate t)
   :config
   ;; Keep at the top and let other packages append to `org-babel-load-languages'.
