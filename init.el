@@ -1102,6 +1102,19 @@ apps are not started from a shell."
   (typescript-mode . eglot-ensure)
   :mode ("\\.ts\\'" . typescript-mode))
 
+(use-package add-node-modules-path
+  :ensure t
+  :defer t
+  :custom
+  (eval-after-load 'typescript-ts-mode
+    '(add-hook 'typescript-ts-mode-hook #'add-node-modules-path))
+  (eval-after-load 'tsx-ts-mode
+    '(add-hook 'tsx-ts-mode-hook #'add-node-modules-path))
+  (eval-after-load 'typescriptreact-mode
+    '(add-hook 'typescriptreact-mode-hook #'add-node-modules-path))
+  (eval-after-load 'js-mode
+    '(add-hook 'js-mode-hook #'add-node-modules-path)))
+
 ;; javascript -----------------------------------------------------------------------------------------
 (use-package js2-mode
   :ensure t
