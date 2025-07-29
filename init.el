@@ -908,6 +908,12 @@ apps are not started from a shell."
   (("C-c g f" . #'consult-ls-git)
    ("C-c g F" . #'consult-ls-git-other-window)))
 
+(use-package consult-vc-modified-files
+  :ensure t
+  :bind
+  (("C-x v /" . consult-vc-modified-files)
+   ("C-x v ." . consult-vc-log-select-files)))
+
 ;; tree-sitter ---------------------------------------------------------------------------------------
 (use-package treesit-auto
   :ensure t
