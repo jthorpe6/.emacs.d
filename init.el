@@ -1202,45 +1202,6 @@ apps are not started from a shell."
 	  (tags . " %i %-12:c%t")
 	  (search . " %i %-12:c")))
 
-  (defun jt/org-has-upcoming-deadlines-p ()
-    "Check if any TODO entry in `org-agenda-files` has a deadline within the next 3 days."
-    (let ((now (current-time))
-          (limit (time-add (current-time) (* 3 24 60 60)))
-          (found nil))
-      (org-map-entries
-       (lambda ()
-	 (let ((deadline (org-entry-get nil "DEADLINE")))
-           (when deadline
-             (let ((timestamp (org-time-string-to-time deadline)))
-               (when (and (time-less-p timestamp limit))
-		 (setq found t))))))
-       "/TODO" 'agenda)
-      found))
-
-  (defun jt/org-deadline-warning-icon ()
-    "Return a warning icon if any TODO has a deadline within 3 days."
-    (when (jt/org-has-upcoming-deadlines-p)
-      (propertize " ⚠ Deadlines"
-		  'face '(:foreground "orange")
-		  'mouse-face 'mode-line-highlight
-		  'help-echo "Open Org Agenda"
-		  'local-map (let ((map (make-sparse-keymap)))
-                               (define-key map [mode-line down-mouse-1]
-					   (lambda () (interactive) (org-agenda-list)))
-                               map))))
-
-  ;; mode line indicator setups
-  (doom-modeline-def-segment org-deadline-warning
-    (jt/org-deadline-warning-icon))
-
-  (with-eval-after-load 'doom-modeline
-  (doom-modeline-def-modeline 'my-updated-doom-modeline
-    doom-modeline--default-mode-line
-    (append doom-modeline--default-right
-            '(org-deadline-warning)))
-
-  (setq-default mode-line-format (doom-modeline 'my-doom-modeline))
-
   ;; general org-mode config
   (setq org-startup-folded t
 	org-startup-with-inline-images t
