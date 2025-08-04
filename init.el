@@ -558,10 +558,10 @@ apps are not started from a shell."
   (global-set-key (kbd "M-3") #'(lambda () (interactive) (insert "#")))
 
   ;; need gnu-sed for man pages
-  (let ((gnu-sed-path "/opt/homebrew/opt/gnu-sed/libexec/gnubin"))
-    (when (file-exists-p gnu-sed-path)
-      (setenv "PATH" (concat gnu-sed-path ":" (getenv "PATH")))
-      (add-to-list 'exec-path gnu-sed-path)))
+  ;; (let ((gnu-sed-path "/opt/homebrew/opt/gnu-sed/libexec/gnubin"))
+  ;;   (when (file-exists-p gnu-sed-path)
+  ;;     (setenv "PATH" (concat gnu-sed-path ":" (getenv "PATH")))
+  ;;     (add-to-list 'exec-path gnu-sed-path)))
   
   (setq dired-use-ls-dired nil)
   
