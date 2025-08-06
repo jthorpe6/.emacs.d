@@ -123,8 +123,6 @@
   ;; key bindings
   (global-set-key (kbd "s-<return>") 'jt/toggle-fullscreen)
   (global-set-key (kbd "C-x k") 'jt/kill-current-buffer)
-  (global-set-key (kbd "C-x 2") 'jt/split-and-follow-horizontally)
-  (global-set-key (kbd "C-x 3") 'jt/split-and-follow-vertically)
   (global-set-key (kbd "s-/") 'jt/comment-region-or-line)
   (global-set-key (kbd "C-x C-x") 'compile) ;; orig. exchange-point-and-mark
   (global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
@@ -157,18 +155,6 @@
   (defun jt/kill-current-buffer ()
     (interactive)
     (kill-buffer (current-buffer)))
-  
-  (defun jt/split-and-follow-horizontally ()
-    (interactive)
-    (split-window-below)
-    (balance-windows)
-    (other-window 1))
-
-  (defun jt/split-and-follow-vertically ()
-    (interactive)
-    (split-window-right)
-    (balance-windows)
-    (other-window 1))
 
   (defun jt/display-ibuffer-window (buffer alist)
     "Display the Ibuffer buffer in a new window and move cursor to it."
