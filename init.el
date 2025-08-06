@@ -901,6 +901,13 @@ apps are not started from a shell."
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+(use-package treesit-fold
+  :ensure t
+  :after treesit-auto
+  :bind (("s-f" . treesit-fold-toggle))
+  :config
+  (global-treesit-fold-indicators-mode 1))
+
 ;; eglot ----------------------------------------------------------------------------------------------
 (use-package eglot
   :ensure t
