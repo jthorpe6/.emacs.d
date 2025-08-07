@@ -1257,14 +1257,15 @@ apps are not started from a shell."
      (js . t)
      (C . t))))
 
-;; git submodule org apple notes
 (use-package org-apple-notes
   :if (file-directory-p "~/.emacs.d/org-apple-notes/")
   :ensure nil
+  :after org
   :load-path "~/.emacs.d/org-apple-notes/")
 
 (use-package ob-idapython
   :if (file-directory-p "~/.emacs.d/ob-idapython/")
+  :ensure nil
   :load-path "~/.emacs.d/ob-idapython/"
   :after org
   :config
