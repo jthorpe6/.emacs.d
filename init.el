@@ -1316,11 +1316,6 @@ apps are not started from a shell."
 
 (use-package ox-gfm :ensure t)
 
-(use-package ox-hugo
-  :ensure t
-  :pin melpa
-  :after ox)
-
 (use-package org-download
   :ensure t
   :bind (:map org-mode-map ("C-c o d" . org-download-clipboard))
