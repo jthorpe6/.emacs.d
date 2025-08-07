@@ -1259,7 +1259,7 @@ apps are not started from a shell."
 
 ;; git submodule org apple notes
 (use-package org-apple-notes
-  :if (file-directory-p "~/.emacs.d/ob-idapython/")
+  :if (file-directory-p "~/.emacs.d/org-apple-notes/")
   :ensure nil
   :load-path "~/.emacs.d/org-apple-notes/")
 
