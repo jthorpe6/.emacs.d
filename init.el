@@ -948,6 +948,7 @@ apps are not started from a shell."
 
 ;; just -----------------------------------------------------------------------------------------------
 (use-package just-mode :ensure t)
+(use-package justl :ensure t)
 
 ;; docker ---------------------------------------------------------------------------------------------
 (use-package docker :ensure t)
