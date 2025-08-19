@@ -1240,6 +1240,8 @@ apps are not started from a shell."
 ;;             (lambda (&rest _)
 ;;               (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
 
+(use-package org-alert :ensure t)
+
 (use-package ob
   :demand t
   :bind (:map org-mode-map
