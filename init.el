@@ -827,6 +827,27 @@ apps are not started from a shell."
   (which-key-mode)
   :diminish 'which-key-mode)
 
+;; rss ------------------------------------------------------------------------------------------------
+(use-package elfeed
+  :ensure t
+  :commands (elfeed)
+  :init
+  (run-at-time nil (* 30 60) #'elfeed-update)
+  :config
+  (setq elfeed-feeds
+        '(
+	  ("https://hnrss.org/frontpage" hackernews)
+	  ("https://developer.apple.com/news/releases/rss/releases.rss" apple)
+	  ("https://goodguysgogrind.wordpress.com/feed/" ggg)
+	  ("https://www.angrymetalguy.com/tag/goregrind/feed/" goregrind)
+          )))
+
+(use-package elfeed-goodies
+  :ensure t
+  :after elfeed
+  :config
+  (elfeed-goodies/setup))
+
 ;;; programming ---------------------------------------------------------------------------------------
 
 ;; diffing --------------------------------------------------------------------------------------------
