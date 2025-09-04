@@ -871,6 +871,7 @@ apps are not started from a shell."
 
 (use-package magit-delta
   :ensure t
+  :after magit
   :hook (magit-mode . magit-delta-mode))
 
 (use-package magit-todos
