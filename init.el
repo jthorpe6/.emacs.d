@@ -79,7 +79,7 @@
   ;; main window settings
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  
+
   ;; character encoding
   (set-charset-priority 'unicode)
   (set-default-coding-systems 'utf-8)
@@ -115,7 +115,7 @@
 		find-file-visit-truename t ;; account for symlinks
 		sentence-end-double-space nil ;; sentences end with 1 space not two
 		display-fill-column-indicator-column 120)
-  
+
   ;; hooks
   (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
@@ -138,7 +138,7 @@
   (global-set-key (kbd "C-x ,") 'previous-buffer)
   (global-set-key (kbd "M-j") 'avy-goto-char)
   (global-unset-key (kbd "C-r")) ;; unset I-search
-  
+
   ;; custom functions
   (defun jt/markdown-convert-buffer-to-org ()
     "Convert the current buffer's content from markdown to org-mode format using pandoc"
@@ -146,7 +146,7 @@
     (shell-command-on-region (point-min) (point-max)
                              (format "pandoc -f markdown -t org -o %s"
                                      (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
-  
+
   (defadvice jt/mouse-save-then-kill (around mouse2-copy-region activate)
     (when (region-active-p)
       (copy-region-as-kill (region-beginning) (region-end)))
@@ -159,7 +159,7 @@
      (if (not (frame-parameter nil 'fullscreen))
          'fullscreen
        nil)))
-  
+
   (defun jt/kill-current-buffer ()
     (interactive)
     (kill-buffer (current-buffer)))
@@ -168,7 +168,7 @@
     "Display the Ibuffer buffer in a new window and move cursor to it."
     (let ((window (display-buffer-pop-up-window buffer alist)))
       (select-window window)))
-  
+
   (defun jt/comment-region-or-line ()
     "Comments out the current region or line."
     (interactive)
@@ -216,7 +216,7 @@
     (let ((inhibit-read-only t))
       (erase-buffer)
       (eshell-send-input)))
-  
+
   (defun jt/eshell-clear-screen ()
     "Clear the screen in Eshell."
     (interactive)
@@ -243,7 +243,7 @@
                (window-parent))
       (delete-window)
       (remove-hook 'kill-buffer-hook #'jt/eshell-kill-hook)))
-  
+
   (global-set-key (kbd "C-c t") 'jt/eshell-here)
 
   ;; prompt settings ------------------------------------------------------------------------------------
@@ -394,11 +394,6 @@ apps are not started from a shell."
 
 (jt/set-exec-path-from-shell-PATH)
 
-;; (use-package exec-path-from-shell
-;;   :ensure t
-;;   :init (exec-path-from-shell-initialize)
-;;   :config (setq exec-path-from-shell-arguments '("-i" "-c")))
-
 ;; diminish -------------------------------------------------------------------------------------------
 ;; diminish those minor-mode indicators
 (use-package diminish :ensure t)
@@ -548,19 +543,13 @@ apps are not started from a shell."
 (when (eq system-type 'darwin)
   (global-set-key (kbd "M-3") #'(lambda () (interactive) (insert "#")))
 
-  ;; need gnu-sed for man pages
-  ;; (let ((gnu-sed-path "/opt/homebrew/opt/gnu-sed/libexec/gnubin"))
-  ;;   (when (file-exists-p gnu-sed-path)
-  ;;     (setenv "PATH" (concat gnu-sed-path ":" (getenv "PATH")))
-  ;;     (add-to-list 'exec-path gnu-sed-path)))
-  
   (setq dired-use-ls-dired nil)
-  
+
   (use-package ns-auto-titlebar
     :ensure t
     :config
     (ns-auto-titlebar-mode))
-  
+
   (use-package dwim-shell-command
     :ensure t
     :bind (([remap shell-command] . dwim-shell-command)
