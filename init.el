@@ -54,6 +54,14 @@
 (require 'use-package)
 ;; (setq use-package-always-ensure t)
 
+;; quelpa ---------------------------------------------------------------------------------------------
+(use-package quelpa :ensure t)
+(use-package quelpa-use-package
+  :ensure t
+  :after quelpa
+  :config
+  (quelpa-use-package-activate-advice))
+
 ;;; keep packages up to date --------------------------------------------------------------------------
 (use-package auto-package-update
   :ensure t
