@@ -1249,19 +1249,6 @@ apps are not started from a shell."
 	org-agenda-current-time-string
 	"◀── now ┄┄┄┄┄┄┄"))
 
-;; (defun load-org-babel-language (lang)
-;;   "Load org-babel language module with case sensitivity for LANG."
-;;   (let* ((lang-name (symbol-name lang))
-;;          (capitalized-lang (if (member lang-name '("c")) "C" lang-name))
-;;          (symbol-lang (intern capitalized-lang)))
-;;     (unless (cdr (assoc symbol-lang org-babel-load-languages))
-;;       (add-to-list 'org-babel-load-languages (cons symbol-lang t))
-;;       (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))))
-
-;; (advice-add 'org-babel-execute-src-block :before
-;;             (lambda (&rest _)
-;;               (load-org-babel-language (intern (org-element-property :language (org-element-at-point))))))
-
 (use-package org-alert :ensure t)
 
 (use-package ob
