@@ -585,7 +585,7 @@ apps are not started from a shell."
 (use-package visual-replace
   :ensure t
   :bind (("M-%" . visual-replace)))
-         
+
 ;;; completion and other nice things ------------------------------------------------------------------
 ;; consult --------------------------------------------------------------------------------------------
 (use-package consult
