@@ -835,6 +835,11 @@ apps are not started from a shell."
   (which-key-mode)
   :diminish 'which-key-mode)
 
+;; pass -----------------------------------------------------------------------------------------------
+(use-package pass
+  :ensure-system-package (pass)
+  :ensure t)
+
 ;; rss ------------------------------------------------------------------------------------------------
 (use-package elfeed
   :ensure t
