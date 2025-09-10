@@ -445,9 +445,9 @@ apps are not started from a shell."
 ;; turn on fill-colum by default for prog-mode
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
-;; whitespace indicator for prog-mode
+;; whitespace indicator
 (setq whitespace-style '(face tabs spaces trailing))
-(add-hook 'prog-mode-hook #'whitespace-mode)
+(global-whitespace-mode t)
 
 ;; change the cursor to a bar
 (setq-default cursor-type 'bar)
